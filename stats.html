@@ -34,8 +34,8 @@
   .u-nav a:hover{color:#fff}
   .u-dark a{color:var(--white)}
   .u-dark a:hover{color:var(--pink)}
-  .game-row{transition:background .18s ease}
-  .game-row:hover{background:var(--paper)}
+  .award-row{transition:background .18s ease}
+  .award-row:hover{background:var(--paper)}
   @media (max-width:1060px){
     .nav-row{flex-wrap:nowrap!important;gap:14px!important}
     .nav-links{margin-left:auto!important;min-width:0;flex:1 1 auto;justify-content:flex-end;gap:14px!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
@@ -59,6 +59,13 @@
     section li{text-align:left}
     .u-lift{align-items:center}
     .game-row,.award-row{text-align:center;justify-items:center}
+    .award-row{text-align:left!important;justify-items:stretch!important}
+    section:has(.award-row){text-align:left}
+    section:has(.award-row) h1,section:has(.award-row) h2,section:has(.award-row) h3{text-align:left}
+    section:not(:has(.award-row)) h1{text-align:center}
+    .eyebrow{justify-content:center!important}
+    section:not(:has(.award-row)) div[style*="display:flex"]{justify-content:center!important}
+    section[data-screen-label="Awards CTA"] > div{flex-direction:column;text-align:center;gap:24px!important}
     .foot-row{flex-direction:column;align-items:center!important;text-align:center;gap:28px!important}
     .foot-row nav{justify-content:center}
     .foot-social{justify-content:center;text-align:center}
@@ -67,12 +74,10 @@
     .nav-links a{white-space:nowrap}
     .sec{padding-left:20px!important;padding-right:20px!important}
     .sec-y{padding-top:56px!important;padding-bottom:56px!important}
-    .rec-grid{grid-template-columns:repeat(2,1fr)!important;justify-content:center!important}
-    .up-block{align-items:center!important}
+    .year-grid{grid-template-columns:1fr!important;gap:16px!important}
   }
-  @media (max-width:640px){
-    .game-row{grid-template-columns:52px 1fr!important;grid-row-gap:10px!important;padding:16px 18px!important}
-    .game-res{grid-column:2!important;justify-self:start!important}
+  @media (max-width:600px){
+    .award-row{grid-template-columns:1fr!important;gap:6px!important}
   }
 
   @keyframes utSplashOut{0%,55%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
@@ -101,8 +106,8 @@
 </helmet>
 
 <div style="min-height:100vh;background:var(--paper);overflow-x:clip">
-<div class="ut-splash" aria-hidden="true"><img src="assets/mascot.png" alt=""></div>
 
+<div class="ut-splash" aria-hidden="true"><img src="assets/mascot.png" alt=""></div>
 
 <header class="u-nav" style="position:sticky;top:0;z-index:40;background:rgba(201,67,107,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,16,.12)">
   <div class="nav-row" style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px">
@@ -116,9 +121,9 @@
     <nav class="nav-links" style="margin-left:auto;display:flex;align-items:center;gap:30px">
       <a href="index.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
       <a href="about.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
-      <a href="schedule.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:2px solid #fff;padding-bottom:3px">Schedule</a>
+      <a href="schedule.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
       <span class="ut-drop">
-        <button type="button" class="ut-drop-btn" aria-haspopup="true">Team <span style="font-size:9px;line-height:1">▾</span></button>
+        <button type="button" class="ut-drop-btn is-active" aria-haspopup="true">Team <span style="font-size:9px;line-height:1">▾</span></button>
         <span class="ut-drop-menu">
           <a href="roster.html">Roster</a>
           <a href="stats.html">Stats</a>
@@ -134,7 +139,7 @@
   </div>
 </header>
 
-<section data-screen-label="Schedule header" style="position:relative;background:var(--white);overflow:hidden">
+<section data-screen-label="Stats header" style="position:relative;background:var(--white);overflow:hidden">
   <div style="position:absolute;inset:0;opacity:0.16;pointer-events:none">
     <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
       <g fill="#8d9096">
@@ -149,63 +154,27 @@
     </svg>
   </div>
   <div class="sec sec-y" style="position:relative;max-width:1240px;margin:0 auto;padding:80px 32px 68px">
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px">
+    <div class="eyebrow" style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
       <span style="display:block;width:36px;height:2px;background:var(--pink-deep)"></span>
       <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">2026 Season</span>
     </div>
-    <h1 style="font-size:clamp(48px,6.2vw,84px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase">Schedule<br>&amp; Results</h1>
-    <div class="rec-grid" style="margin-top:44px;display:grid;grid-template-columns:repeat(2,220px);gap:14px;justify-content:start">
-      <div style="background:var(--ink);color:var(--white);border-radius:20px;padding:18px 26px">
-        <span style="display:block;font-family:var(--font-heading);font-weight:900;font-size:32px;line-height:1">18–2</span>
-        <span style="display:block;margin-top:6px;font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)">Record</span>
-      </div>
-      <div style="background:var(--pink-soft);border:1px solid rgba(201,67,107,.25);border-radius:20px;padding:18px 26px">
-        <span style="display:block;font-family:var(--font-heading);font-weight:900;font-size:32px;line-height:1;color:var(--pink-deep)">Finals</span>
-        <span style="display:block;margin-top:6px;font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pink-deep)">Season Finish</span>
-      </div>
-    </div>
+    <h1 style="font-size:clamp(48px,6.2vw,84px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase">Stats</h1>
+    <p style="margin-top:22px;max-width:520px;font-size:18px;line-height:1.62;color:var(--ink-3)">
+      Season totals are coming. Every game is scored in GameChanger — we're getting it onto this page.
+    </p>
   </div>
 </section>
 
-<section data-screen-label="Upcoming" class="sec sec-y" style="background:var(--paper-2);padding:56px 32px">
-  <div class="up-block" style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:22px">
-    <div>
-      <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">Upcoming Games</span>
-      <p style="margin-top:12px;font-size:17px;line-height:1.6;color:var(--ink-3);max-width:520px">The 2026 season is in the books. The 2027 Pine Tree Men's Baseball League schedule will be posted here as soon as it's released.</p>
+<section data-screen-label="Stats placeholder" class="sec sec-y" style="background:var(--paper);padding:88px 32px 104px">
+  <div style="max-width:1240px;margin:0 auto;text-align:center">
+    <div style="max-width:560px;margin:0 auto;background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:28px;padding:56px 40px;box-shadow:0 3px 14px rgba(14,14,16,.05)">
+      <img src="assets/mascot.png" alt="" style="width:120px;height:auto;opacity:.9">
+      <h2 style="margin-top:24px;font-size:clamp(24px,2.6vw,32px);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase">Coming Soon</h2>
+      <p style="margin-top:16px;font-size:16px;line-height:1.62;color:var(--ink-3)">
+        Batting and pitching lines for all seventeen Tuggers. Check back before Opening Day.
+      </p>
+      <a href="roster.html" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--white);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:var(--pink-deep)">Meet the Roster</a>
     </div>
-    <a href="https://www.instagram.com/topshamuddertuggers/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(14,14,16,.22);color:var(--ink);font-weight:800;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="border-color:var(--ink);background:var(--white)">Follow the Herd</a>
-  </div>
-</section>
-
-<section data-screen-label="Results" class="sec sec-y" style="background:var(--paper);padding:80px 32px 104px">
-  <div style="max-width:1240px;margin:0 auto">
-    <h2 style="font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.02em;text-transform:uppercase">2026 Results</h2>
-
-    <sc-for list="{{ months }}" as="m" hint-placeholder-count="4">
-      <div style="margin-top:48px">
-        <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
-          <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
-          <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
-        </div>
-        <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
-          <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
-            <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
-              <div style="display:flex;flex-direction:column;line-height:1">
-                <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
-                <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
-              </div>
-              <div>
-                <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
-                <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
-              </div>
-              <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-    </sc-for>
-
-    <p style="margin-top:36px;font-size:12.5px;letter-spacing:.04em;color:rgba(14,14,16,.45)">Doubleheaders are listed as two games. Home games are marked "vs." and away games "@".</p>
   </div>
 </section>
 
@@ -254,47 +223,36 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   renderVals() {
-    const win = "display:inline-flex;align-items:center;font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.04em;color:#ffffff;background:var(--ink);padding:9px 16px;border-radius:999px;white-space:nowrap";
-    const loss = "display:inline-flex;align-items:center;font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.04em;color:var(--pink-deep);background:var(--pink-soft);border:1px solid rgba(201,67,107,.3);padding:8px 15px;border-radius:999px;white-space:nowrap";
+    const pinkChip = "color:var(--pink-deep);background:var(--pink-soft);border:1px solid rgba(201,67,107,.25);padding:8px 14px;border-radius:999px";
+    const inkChip = "color:var(--ink-3);background:var(--white);border:1px solid rgba(14,14,16,.14);padding:8px 14px;border-radius:999px";
 
     const data = [
-      ["May 2026", "3–1", [
-        ["Sun", "3", "@ Red Sox", "Kents Hill School", "W 4–2", 1],
-        ["", "", "vs. Red Sox", "Kents Hill School", "W 7–6", 1],
-        ["Sun", "17", "@ Paris Panthers", "669 Norway Rd", "W 21–1", 1],
-        ["Sun", "31", "vs. Kennebec Sturgeons", "Mt. Ararat High School", "L 3–10", 0]
+      ["2026", "Finalists", inkChip, [
+        ["AJ Arroyo", "All-Star"],
+        ["Stephen Carter", "All-Star"],
+        ["Eric Cavers", "All-Star"],
+        ["Joshua Mackey", "All-Star"]
       ]],
-      ["June 2026", "5–0", [
-        ["Sun", "7", "@ Lincoln County Cardinals", "Wiscasset Middle High School", "W 5–4", 1],
-        ["Sun", "14", "vs. Mid-Coast Yard Goats", "Mt. Ararat High School", "W 15–3", 1],
-        ["", "", "@ Mid-Coast Yard Goats", "Mt. Ararat High School", "W 8–1", 1],
-        ["Sun", "21", "vs. Central Maine Green Wave", "Mt. Ararat High School", "W 10–6", 1],
-        ["Sun", "28", "vs. Bethel Braves", "Mt. Ararat High School", "W 5–4", 1]
+      ["2025", "Champions", pinkChip, [
+        ["Niko Ruiz", "MVP"],
+        ["Niko Ruiz", "All-Star"],
+        ["Stephen Carter", "Cy Young"],
+        ["AJ Arroyo", "Rookie of the Year"],
+        ["Eric Cavers", "Rookie of the Year"],
+        ["Joshua Mackey", "All-Star"],
+        ["Peter Richard", "Manager of the Year"]
       ]],
-      ["July 2026", "5–0", [
-        ["Sun", "12", "vs. Rangers", "Mt. Ararat High School", "W 17–0", 1],
-        ["", "", "@ Rangers", "Mt. Ararat High School", "W 21–0", 1],
-        ["Sun", "19", "@ Rumford Expos", "Hosmer Field Complex", "W 9–1", 1],
-        ["Sun", "26", "@ Turner Marlins", "Leavitt Area High School", "W 6–1", 1],
-        ["", "", "vs. Turner Marlins", "Leavitt Area High School", "W 14–4", 1]
-      ]],
-      ["August 2026", "5–1", [
-        ["Sun", "2", "vs. Monmouth Moose", "79 Foreside Rd", "W 11–1", 1],
-        ["", "", "@ Monmouth Moose", "79 Foreside Rd", "W 17–5", 1],
-        ["Sat", "15", "vs. Mid-Coast Yard Goats", "The American Legion", "W 11–1", 1],
-        ["Sun", "16", "vs. Rumford Expos", "The American Legion", "W 15–3", 1],
-        ["Sun", "23", "vs. Central Maine Green Wave", "7 Ballpark Way", "W 7–5", 1],
-        ["Sun", "30", "vs. Bethel Braves", "7 Ballpark Way", "L 9–11", 0]
+      ["2024", "Finalists", inkChip, [
+        ["Brady Larson", "Cy Young"],
+        ["Brady Larson", "Rookie of the Year"],
+        ["Peter Richard", "Gold Glove"]
       ]]
     ];
 
     return {
-      months: data.map(([label, record, games]) => ({
-        label, record,
-        games: games.map(([dow, day, opponent, venue, result, won]) => ({
-          dow, day, opponent, venue, result,
-          resultStyle: won ? win : loss
-        }))
+      years: data.map(([year, finish, finishStyle, awards]) => ({
+        year, finish, finishStyle,
+        awards: awards.map(([name, award]) => ({ name, award }))
       }))
     };
   }

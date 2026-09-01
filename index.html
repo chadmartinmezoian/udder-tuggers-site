@@ -113,6 +113,23 @@
   .ut-splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--ink);animation:utSplashOut 1.5s cubic-bezier(.4,0,.2,1) forwards;pointer-events:none}
   .ut-splash img{width:min(38vw,240px);animation:utMarkIn 1.5s cubic-bezier(.2,.7,.3,1) forwards}
   @media (prefers-reduced-motion:reduce){.ut-splash{display:none}}
+
+  .ut-flat{display:none}
+  .ut-drop{position:relative;display:flex;align-items:center}
+  .ut-drop-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap}
+  .ut-drop:hover .ut-drop-btn,.ut-drop:focus-within .ut-drop-btn{color:#fff}
+  .ut-drop-btn.is-active{color:#fff;border-bottom:2px solid #fff;padding-bottom:3px}
+  .ut-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);min-width:168px;background:var(--white);border-radius:16px;box-shadow:0 16px 40px rgba(14,14,16,.22);padding:8px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .16s ease,transform .16s ease;z-index:60}
+  .ut-drop:hover .ut-drop-menu,.ut-drop:focus-within .ut-drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(10px)}
+  .u-nav .ut-drop-menu a{display:block;padding:11px 14px;border-radius:10px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .u-nav .ut-drop-menu a:hover{background:var(--pink-soft);color:var(--pink-deep)}
+  @media (max-width:1060px){
+    .ut-drop{display:none!important}
+    .ut-flat{display:inline!important;flex:0 0 auto}
+  }
+  @media (max-width:700px){
+    .ut-drop-btn{font-size:11px;letter-spacing:.1em}
+  }
 </style>
 </helmet>
 
@@ -133,8 +150,17 @@
       <a href="#top" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:2px solid #fff;padding-bottom:3px">Home</a>
       <a href="about.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
       <a href="schedule.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
-      <a href="roster.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
-      <a href="awards.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
+      <span class="ut-drop">
+        <button type="button" class="ut-drop-btn" aria-haspopup="true">Team <span style="font-size:9px;line-height:1">▾</span></button>
+        <span class="ut-drop-menu">
+          <a href="roster.html">Roster</a>
+          <a href="stats.html">Stats</a>
+          <a href="awards.html">Awards</a>
+        </span>
+      </span>
+      <a class="ut-flat" href="roster.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+      <a class="ut-flat" href="stats.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Stats</a>
+      <a class="ut-flat" href="awards.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
       <a href="clubhouse.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Clubhouse</a>
       <a href="sponsors.html" style="font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-deep);background:#fff;padding:11px 20px;border-radius:999px" class="nav-cta" style-hover="background:var(--ink);color:#fff">Sponsor Us</a>
     </nav>
@@ -411,6 +437,7 @@
         <a href="about.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
         <a href="schedule.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
         <a href="roster.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+        <a href="stats.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Stats</a>
         <a href="awards.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
         <a href="clubhouse.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Clubhouse</a>
         <a href="sponsors.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Sponsors</a>
