@@ -86,6 +86,11 @@
   .ut-splash img{width:min(38vw,240px);animation:utMarkIn 1.5s cubic-bezier(.2,.7,.3,1) forwards}
   @media (prefers-reduced-motion:reduce){.ut-splash{display:none}}
 
+  .stat-row:hover{background:var(--pink-soft)}
+  .stat-row:hover td[style*="position:sticky"]{background:var(--pink-soft)!important}
+  @media (max-width:860px){
+    .stat-head{flex-direction:column;align-items:center!important;text-align:center;gap:14px!important}
+  }
   .ut-flat{display:none}
   .ut-drop{position:relative;display:flex;align-items:center}
   .ut-drop-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap}
@@ -160,21 +165,69 @@
     </div>
     <h1 style="font-size:clamp(48px,6.2vw,84px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase">Stats</h1>
     <p style="margin-top:22px;max-width:520px;font-size:18px;line-height:1.62;color:var(--ink-3)">
-      Season totals are coming. Every game is scored in GameChanger — we're getting it onto this page.
+      Final offensive numbers from the 2026 season. Twenty games, a .390 team average.
     </p>
   </div>
 </section>
 
-<section data-screen-label="Stats placeholder" class="sec sec-y" style="background:var(--paper);padding:88px 32px 104px">
-  <div style="max-width:1240px;margin:0 auto;text-align:center">
-    <div style="max-width:560px;margin:0 auto;background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:28px;padding:56px 40px;box-shadow:0 3px 14px rgba(14,14,16,.05)">
-      <img src="assets/mascot.png" alt="" style="width:120px;height:auto;opacity:.9">
-      <h2 style="margin-top:24px;font-size:clamp(24px,2.6vw,32px);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase">Coming Soon</h2>
-      <p style="margin-top:16px;font-size:16px;line-height:1.62;color:var(--ink-3)">
-        Batting and pitching lines for all seventeen Tuggers. Check back before Opening Day.
-      </p>
-      <a href="roster.html" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--white);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:var(--pink-deep)">Meet the Roster</a>
+<section data-screen-label="2026 Batting" class="sec sec-y" style="background:var(--paper);padding:72px 32px 104px">
+  <div style="max-width:1240px;margin:0 auto">
+    <div class="stat-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div>
+        <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">Batting</span>
+        <h2 style="margin-top:14px;font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.02em;text-transform:uppercase">2026 Season Totals</h2>
+      </div>
+      <span style="font-size:11.5px;letter-spacing:.06em;color:rgba(14,14,16,.45)">Sorted by average · Scroll for more →</span>
     </div>
+
+    <div style="margin-top:32px;border-radius:22px;overflow:hidden;box-shadow:0 4px 20px rgba(14,14,16,.08);background:var(--white)">
+      <div class="stat-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+        <table style="width:100%;border-collapse:collapse;min-width:900px">
+          <thead>
+            <tr style="background:var(--ink)">
+              <th style="padding:14px 18px;text-align:left;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);white-space:nowrap;position:sticky;left:0;background:var(--ink);z-index:2">Player</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">GP</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">PA</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">AB</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">H</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">2B</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">3B</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">HR</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">RBI</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">R</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">BB</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">SO</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">SB</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">AVG</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">OBP</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">SLG</th>
+            <th style="padding:14px 12px;text-align:right;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap">OPS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ rows }}" as="r" hint-placeholder-count="17">
+              <tr class="stat-row" style="border-top:1px solid rgba(14,14,16,.08)">
+                <td style="padding:13px 18px;white-space:nowrap;position:sticky;left:0;background:var(--white);z-index:1">
+                  <span style="font-family:var(--font-heading);font-weight:900;font-size:11px;color:rgba(14,14,16,.35);min-width:26px;display:inline-block">{{ r.num }}</span>
+                  <span style="font-weight:800;font-size:14.5px;letter-spacing:-.01em">{{ r.name }}</span>
+                </td>
+                <sc-for list="{{ r.vals }}" as="v" hint-placeholder-count="16">
+                  <td style="padding:13px 12px;text-align:right;font-size:13.5px;font-variant-numeric:tabular-nums;color:var(--ink-3);white-space:nowrap">{{ v }}</td>
+                </sc-for>
+              </tr>
+            </sc-for>
+            <tr style="border-top:2px solid var(--ink);background:var(--paper-2)">
+              <td style="padding:15px 18px;white-space:nowrap;position:sticky;left:0;background:var(--paper-2);z-index:1;font-family:var(--font-heading);font-weight:900;font-size:12px;letter-spacing:.14em;text-transform:uppercase">Team</td>
+              <sc-for list="{{ totals }}" as="v" hint-placeholder-count="16">
+                <td style="padding:15px 12px;text-align:right;font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap">{{ v }}</td>
+              </sc-for>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p style="margin-top:22px;font-size:12px;letter-spacing:.04em;color:rgba(14,14,16,.42)">Scored in GameChanger. Pitching and fielding lines coming soon.</p>
   </div>
 </section>
 
@@ -223,41 +276,32 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   renderVals() {
-    const pinkChip = "color:var(--pink-deep);background:var(--pink-soft);border:1px solid rgba(201,67,107,.25);padding:8px 14px;border-radius:999px";
-    const inkChip = "color:var(--ink-3);background:var(--white);border:1px solid rgba(14,14,16,.14);padding:8px 14px;border-radius:999px";
-
-    const data = [
-      ["2026", "Finalists", inkChip, [
-        ["AJ Arroyo", "All-Star"],
-        ["Stephen Carter", "All-Star"],
-        ["Eric Cavers", "All-Star"],
-        ["Joshua Mackey", "All-Star"]
-      ]],
-      ["2025", "Champions", pinkChip, [
-        ["Niko Ruiz", "MVP"],
-        ["Niko Ruiz", "All-Star"],
-        ["Stephen Carter", "Cy Young"],
-        ["AJ Arroyo", "Rookie of the Year"],
-        ["Eric Cavers", "Rookie of the Year"],
-        ["Joshua Mackey", "All-Star"],
-        ["Peter Richard", "Manager of the Year"]
-      ]],
-      ["2024", "Finalists", inkChip, [
-        ["Brady Larson", "Cy Young"],
-        ["Brady Larson", "Rookie of the Year"],
-        ["Peter Richard", "Gold Glove"]
-      ]]
+    // num, name, GP, PA, AB, H, 2B, 3B, HR, RBI, R, BB, SO, SB, AVG, OBP, SLG, OPS
+    const raw = [
+      ["26", "Josh Massey", 10, 32, 23, 13, 0, 0, 0, 13, 11, 8, 3, 0, ".565", ".656", ".565", "1.221"],
+      ["27", "Chad Mezoian", 16, 53, 44, 22, 9, 0, 1, 15, 17, 4, 1, 1, ".500", ".509", ".773", "1.282"],
+      ["92", "AJ Arroyo", 20, 71, 60, 28, 4, 0, 2, 22, 20, 8, 3, 8, ".467", ".535", ".633", "1.169"],
+      ["5", "Cam Delisle", 16, 48, 33, 15, 4, 1, 0, 11, 12, 10, 3, 5, ".455", ".583", ".636", "1.220"],
+      ["13", "Josh Mackey", 20, 69, 55, 25, 4, 0, 0, 18, 26, 8, 4, 4, ".455", ".536", ".527", "1.064"],
+      ["94", "Eric Cavers", 16, 52, 46, 20, 9, 0, 1, 18, 20, 4, 5, 5, ".435", ".481", ".696", "1.176"],
+      ["4", "Alberto Peña Rojas", 16, 51, 42, 18, 5, 1, 3, 15, 20, 7, 10, 8, ".429", ".529", ".810", "1.339"],
+      ["19", "Nate Duncklee", 7, 20, 14, 6, 3, 0, 0, 3, 5, 4, 2, 0, ".429", ".550", ".643", "1.193"],
+      ["10", "Peter Richard", 18, 56, 47, 20, 2, 0, 0, 10, 18, 8, 7, 12, ".426", ".500", ".468", ".968"],
+      ["99", "Sosa Telemaco", 16, 40, 29, 11, 0, 0, 0, 5, 10, 7, 5, 0, ".379", ".500", ".379", ".879"],
+      ["93", "Jerod Verrill", 16, 50, 47, 17, 2, 0, 2, 12, 11, 2, 3, 1, ".362", ".380", ".532", ".912"],
+      ["11", "Brady Larson", 15, 48, 42, 13, 2, 0, 0, 7, 7, 4, 10, 3, ".310", ".362", ".357", ".719"],
+      ["47", "John Parker", 12, 32, 25, 7, 2, 0, 0, 6, 6, 5, 3, 0, ".280", ".406", ".360", ".766"],
+      ["9", "Niko Ruiz", 9, 28, 22, 6, 2, 0, 0, 2, 7, 4, 4, 1, ".273", ".429", ".364", ".792"],
+      ["44", "Stephen Carter", 17, 51, 44, 12, 3, 0, 2, 13, 10, 6, 6, 3, ".273", ".353", ".477", ".830"],
+      ["23", "Drew Kempf", 16, 43, 37, 10, 0, 0, 0, 7, 11, 5, 6, 0, ".270", ".372", ".270", ".642"],
+      ["28", "Steven Albert", 10, 23, 19, 2, 0, 0, 0, 1, 4, 3, 8, 0, ".105", ".261", ".105", ".366"]
     ];
-
     return {
-      years: data.map(([year, finish, finishStyle, awards]) => ({
-        year, finish, finishStyle,
-        awards: awards.map(([name, award]) => ({ name, award }))
-      }))
+      rows: raw.map((r) => ({ num: r[0], name: r[1], vals: r.slice(2) })),
+      totals: [20, 767, 629, 245, 51, 2, 11, 178, 215, 97, 83, 51, ".390", ".474", ".529", "1.003"]
     };
   }
 }
-
 </script>
 </body>
 </html>
