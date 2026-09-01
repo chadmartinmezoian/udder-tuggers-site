@@ -243,7 +243,6 @@
         </div>
       </div>
     </div>
-    <p style="margin-top:36px;font-size:12.5px;letter-spacing:.04em;color:rgba(14,14,16,.45)">Bios are placeholder copy — send real ones and I'll drop them in. Bats/throws and photos can be added to these cards later.</p>
   </div>
 </section>
 
@@ -303,28 +302,27 @@
 class Component extends DCLogic {
   renderVals() {
     const raw = [
-      ["Steven", "Albert", "28", "P / 1B", [], "Dairy Daddy"],
-      ["AJ", "Arroyo", "92", "OF", ["2026 All-Star", "2025 Rookie of the Year"], "Muscle Milk"],
-      ["Stephen", "Carter", "44", "P / 1B", ["2026 All-Star", "2025 Cy Young"], "Whole Milk"],
-      ["Eric", "Cavers", "94", "C / IF", ["2026 All-Star", "2025 Rookie of the Year"], "Butter Balls"],
-      ["Cameron", "Delisle", "5", "OF", [], "Raw Milk"],
-      ["Nate", "Duncklee", "19", "OF", [], "Mr. Moo"],
-      ["Andrew", "Kempf", "23", "IF", [], "Salted Butter"],
-      ["Brady", "Larson", "11", "P / IF / OF", ["2024 Cy Young", "2024 Rookie of the Year"], "The Churner"],
-      ["Joshua", "Mackey", "13", "SS", ["2026 All-Star", "2025 All-Star"], "Hairy Milk"],
-      ["Joshua", "Massey", "26", "C", [], "Heavy Cream"],
-      ["Chad", "Mezoian", "27", "INF / P", [], "Whipped Cream"],
-      ["John", "Parker", "47", "P / 1B", [], "Skim Milk / Jebediah"],
-      ["Alberto", "Peña Rojas", "4", "OF", [], "Dulce de Leche"],
-      ["Peter", "Richard", "10", "OF", ["2024 Gold Glove", "2025 Manager of the Year"], "The Milkman"],
-      ["Niko", "Ruiz", "9", "IF / P / C", ["2025 All-Star", "2025 MVP"], "Chocolate Milk"],
-      ["Sosa", "Telemaco", "99", "P", [], "Jalapeño Milk"],
-      ["Jerod", "Verrill", "93", "C / IF", [], "Ice Cream"]
+      ["Steven", "Albert", "28", "P / 1B", [], "Dairy Daddy", "Worcester native Steve Albert, aka Dairy Daddy, is a pitcher/outfielder who played collegiately at Saint Joseph's College of Maine. A lifelong Red Sox and David Ortiz fan, Albert's favorite PTL memory is helping bring home the Tuggers' 2025 championship."],
+      ["AJ", "Arroyo", "92", "OF", ["2026 All-Star", "2025 Rookie of the Year"], "Muscle Milk", "NYC native AJ \"Create-a-Player\" Arroyo, aka Muscle Milk, brings independent professional baseball experience and the ability to play both corner infield spots and the outfield. Arroyo was named the 2025 Coastal Rookie of the Year and an All-Star, then delivered the biggest hit of the season with a walk-off single to win the Tuggers their first championship."],
+      ["Stephen", "Carter", "44", "P / 1B", ["2026 All-Star", "2025 Cy Young"], "Whole Milk", "Whole Milk Stephen Carter is a pitcher and corner infielder from Brunswick who played collegiately at Endicott College. Carter established himself as one of the league's top arms by winning the 2025 Coastal Cy Young, although his favorite PTL memory remains Parker accidentally launching his bat roughly 200 feet down the line."],
+      ["Eric", "Cavers", "94", "C / IF", ["2026 All-Star", "2025 Rookie of the Year"], "Butter Balls", "Butter Balls brings professional baseball pedigree behind the plate after Eric Cavers was selected by the Houston Astros in the 10th round of the 2004 MLB Draft and spent three seasons in their system. The Oxford Hills product returned to the PTL in 2025 and promptly earned Mountain Rookie of the Year and All-Star honors, with the added bonus of reuniting with longtime teammate Jerry Verrill."],
+      ["Cameron", "Delisle", "5", "OF", [], "Raw Milk", "Pennsylvania native Cameron Delisle, better known as Raw Milk, patrols the Tuggers' outfield after playing collegiately at Immaculata University. A Red Sox fan who grew up admiring Nomar Garciaparra, Delisle's first PTL season ended about as well as possible: winning the 2025 championship."],
+      ["Nate", "Duncklee", "19", "OF", [], "Mr. Moo", "Nate \"Dunk\" Duncklee, affectionately known as Mr. Moo, brings versatility behind the plate, in the outfield, and at first base. The Hall-Dale product went on to play at Colby-Sawyer College, and his favorite Pine Tree League memory is helping the Tuggers capture the 2025 championship."],
+      ["Andrew", "Kempf", "23", "IF", [], "Salted Butter", "Bath native Andrew \"Drew\" Kempf, better known to the Tuggers as Salted Butter, gives the club versatility at second, third, and the outfield. The Morse High School product grew up a Red Sox and Ken Griffey Jr. fan, and counts winning the PTL Championship among his favorite baseball memories."],
+      ["Brady", "Larson", "11", "P / IF / OF", ["2024 Cy Young", "2024 Rookie of the Year"], "The Churner", "Brunswick native Brady \"Kid\" Larson, aka The Churner, is a pitcher/outfielder who played collegiately at Plymouth State University. After bursting onto the PTL scene as the 2024 Rookie of the Year and Cy Young winner, his favorite memories include a 17-strikeout Father's Day performance and scoring the winning run of the Tuggers' 2025 season."],
+      ["Joshua", "Mackey", "13", "SS", ["2026 All-Star", "2025 All-Star"], "Hairy Milk", "Shortstop and reliever Josh \"Mack\" Mackey, aka Hairy Milk, played collegiately at the University of Southern Maine before joining the Tuggers. The Danvers, Massachusetts native earned 2025 Coastal All-Star honors and remains fueled by his favorite PTL pastime: listening to the haters of the Tuggers' power. Good 'n you."],
+      ["Joshua", "Massey", "26", "C", [], "Heavy Cream", "A Gardiner/Hall-Dale product and veteran winner, Joshua Massey has been part of an incredible 11 championship teams between the SMMBL and Pine Tree League. A Frank Thomas and Jon Flanders fan, his favorite baseball memory is blasting three home runs in a single high school game, while his most memorable PTL moment came when the other team walked off the field in the fifth inning."],
+      ["Chad", "Mezoian", "27", "INF / P", [], "Whipped Cream", "Whipped Cream Chad Mezoian, aka the Golden Greek, is a utility man who played collegiately at Bowdoin College after attending The Governor's Academy. A Red Sox and Vladimir Guerrero fan, his favorite PTL memory is beating Bethel in front of the entire town, though his most prestigious accolade remains being named the league's best-looking player during his rookie season."],
+      ["John", "Parker", "47", "P / 1B", [], "Skim Milk / Jebediah", "John \"Juicy J\" Parker, better known as Skim Milk, is the Tuggers' DH, pitcher, and undisputed hype man. The former Eastern Connecticut State University player and 2015 KVAC Class A Player of the Year helped win the 2025 championship, while also building a résumé that includes the team's unofficial record for most postgame beverages consumed."],
+      ["Alberto", "Peña Rojas", "4", "OF", [], "Dulce de Leche", "Known around the clubhouse as Dulce de Leche, Alberto Peña is an outfielder from Santiago, Dominican Republic, with an extensive baseball background that included invitations to try out for several MLB organizations. A Dodgers fan who grew up admiring Manny Ramirez and Robinson Canó, his favorite baseball memory is hitting a home run in front of his father."],
+      ["Peter", "Richard", "10", "OF", ["2024 Gold Glove", "2025 Manager of the Year"], "The Milkman", "Outfielder, manager, and resident Milkman Peter Richard played collegiately at Southern Vermont College before joining the Pine Tree League. A former PTL stolen base leader and Gold Glove winner, Richard added 2025 Coastal Manager of the Year to his résumé after guiding the Tuggers to their first championship."],
+      ["Niko", "Ruiz", "9", "IF / P / C", ["2025 All-Star", "2025 MVP"], "Chocolate Milk", "Chocolate Milk can do just about everything on a baseball field, with Niko Ruiz capable of playing third, shortstop, catcher, or taking the mound. The California native and former independent professional player was named 2025 Coastal MVP and an All-Star, with a three-homer game and the Tuggers' 2025 championship among his favorite PTL memories."],
+      ["Sosa", "Telemaco", "99", "P", [], "Jalapeño Milk", "Jalapeño Milk brings some heat to the Tuggers' pitching staff, with Sosa Telemaco having reached independent professional baseball after coming to the U.S. from the Dominican Republic. A fan of Pedro Martinez and the late Yordano Ventura, Sosa's favorite baseball memory is throwing a perfect game in high school."],
+      ["Jerod", "Verrill", "93", "C / IF", [], "Ice Cream", "Jerod \"Big V\" Verrill, known around the Tuggers as ICE Cream, is a catcher and first baseman who previously suited up for the West Paris Westies. A Ken Griffey Jr. fan and Pine Tree Academy product, Verrill's favorite PTL memory is getting the rare opportunity to play on the same team as his father."]
     ];
     return {
-      players: raw.map(([first, last, number, pos, tags, nickname]) => ({
-        first, last, number, pos, tags, nickname, hasTags: tags.length > 0,
-        bio: "Placeholder bio — a couple of lines on " + first + "'s game, how long he's been with the club, and anything worth bragging about."
+      players: raw.map(([first, last, number, pos, tags, nickname, bio]) => ({
+        first, last, number, pos, tags, nickname, bio, hasTags: tags.length > 0
       }))
     };
   }
