@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-cf2b694e-ed69-4293-b3ae-791489e89272/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0e10; --ink-2:#1b1b1e; --ink-3:#3c3c40;
+    --paper:#f7f4ef; --paper-2:#efeae1; --white:#ffffff;
+    --pink:#f7a8be; --pink-deep:#c9436b; --pink-soft:#fde7ee;
+    --gold:#f0c33c; --gold-deep:#a97f12;
+    --font-heading:"Figtree", system-ui, sans-serif;
+    --font-body:"Figtree", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body)}
+  h1,h2,h3,h4{font-family:var(--font-heading);font-weight:900;margin:0}
+  p{margin:0}
+  a{color:var(--pink-deep);text-decoration:none}
+  a:hover{color:var(--ink)}
+  ::selection{background:var(--pink);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--pink-deep);outline-offset:3px}
+  .u-nav a{color:rgba(255,255,255,.82)}
+  .u-nav a:hover{color:#fff}
+  .u-dark a{color:var(--white)}
+  .u-dark a:hover{color:var(--pink)}
+  .game-row{transition:background .18s ease}
+  .game-row:hover{background:var(--paper)}
+  @media (max-width:1060px){
+    .nav-row{flex-wrap:nowrap!important;gap:14px!important}
+    .nav-links{margin-left:auto!important;min-width:0;flex:1 1 auto;justify-content:flex-end;gap:14px!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .nav-links::-webkit-scrollbar{display:none}
+    .nav-links a{white-space:nowrap;flex:0 0 auto}
+  }
+  @media (max-width:700px){
+    .nav-brand-sub{display:none!important}
+    .nav-links{gap:12px!important}
+    .nav-links a{font-size:11px!important;letter-spacing:.1em!important}
+    .nav-cta{padding:9px 14px!important;font-size:10.5px!important}
+  }
+  @media (max-width:860px){
+
+    section{text-align:center}
+    section p{margin-left:auto!important;margin-right:auto!important}
+    section h1,section h2,section h3{text-align:center}
+    section div[style*="display:flex"]{justify-content:center!important}
+    section div[style*="align-items:flex-end"]{align-items:center!important}
+    section ul{align-items:center}
+    section li{text-align:left}
+    .u-lift{align-items:center}
+    .game-row,.award-row{text-align:center;justify-items:center}
+    .foot-row{flex-direction:column;align-items:center!important;text-align:center;gap:28px!important}
+    .foot-row nav{justify-content:center}
+    .foot-social{justify-content:center;text-align:center}
+    .foot-legal{justify-content:center!important;text-align:center}
+    .nav-row{padding-left:16px!important;padding-right:16px!important}
+    .nav-links a{white-space:nowrap}
+    .sec{padding-left:20px!important;padding-right:20px!important}
+    .sec-y{padding-top:56px!important;padding-bottom:56px!important}
+    .rec-grid{grid-template-columns:repeat(2,1fr)!important;justify-content:center!important}
+    .up-block{align-items:center!important}
+  }
+  @media (max-width:640px){
+    .game-row{grid-template-columns:52px 1fr!important;grid-row-gap:10px!important;padding:16px 18px!important}
+    .game-res{grid-column:2!important;justify-self:start!important}
+  }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--paper);overflow-x:clip">
+
+<header class="u-nav" style="position:sticky;top:0;z-index:40;background:rgba(201,67,107,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,16,.12)">
+  <div class="nav-row" style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto">
+      <img src="assets/mascot.png" alt="Udder Tuggers mascot" style="height:46px;width:auto;display:block">
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:var(--font-heading);font-weight:900;font-size:17px;letter-spacing:.02em;text-transform:uppercase;color:#fff">Udder Tuggers</span>
+        <span style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:4px" class="nav-brand-sub">Topsham, Maine</span>
+      </span>
+    </a>
+    <nav class="nav-links" style="margin-left:auto;display:flex;align-items:center;gap:30px">
+      <a href="index.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
+      <a href="about.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
+      <a href="schedule.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:2px solid #fff;padding-bottom:3px">Schedule</a>
+      <a href="roster.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+      <a href="awards.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
+      <a href="sponsors.html" style="font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-deep);background:#fff;padding:11px 20px;border-radius:999px" class="nav-cta" style-hover="background:var(--ink);color:#fff">Sponsor Us</a>
+    </nav>
+  </div>
+</header>
+
+<section data-screen-label="Schedule header" style="position:relative;background:var(--white);overflow:hidden">
+  <div style="position:absolute;inset:0;opacity:0.16;pointer-events:none">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
+      <g fill="#8d9096">
+        <path d="M120 90c60-40 150-30 190 20s10 120-40 150-140 40-190-10-20-120 40-160z"></path>
+        <path d="M520 40c80-20 160 30 150 100s-90 90-160 70-100-80-70-130 40-30 80-40z"></path>
+        <path d="M900 140c70-50 200-10 210 70s-80 140-170 130-150-70-130-140 50-40 90-60z"></path>
+        <path d="M80 460c90-60 180 10 190 90s-70 150-160 140-140-80-120-160 40-50 90-70z"></path>
+        <path d="M480 420c110-40 210 40 190 130s-120 130-210 100-110-110-70-170 50-50 90-60z"></path>
+        <path d="M860 520c80-30 190 30 190 110s-100 120-180 110-130-70-120-140 40-60 110-80z"></path>
+        <path d="M300 700c70-30 150 20 150 80s-70 100-140 90-110-60-90-110 40-50 80-60z"></path>
+      </g>
+    </svg>
+  </div>
+  <div class="sec sec-y" style="position:relative;max-width:1240px;margin:0 auto;padding:80px 32px 68px">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px">
+      <span style="display:block;width:36px;height:2px;background:var(--pink-deep)"></span>
+      <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">2026 Season</span>
+    </div>
+    <h1 style="font-size:clamp(48px,6.2vw,84px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase">Schedule<br>&amp; Results</h1>
+    <div class="rec-grid" style="margin-top:44px;display:grid;grid-template-columns:repeat(2,220px);gap:14px;justify-content:start">
+      <div style="background:var(--ink);color:var(--white);border-radius:20px;padding:18px 26px">
+        <span style="display:block;font-family:var(--font-heading);font-weight:900;font-size:32px;line-height:1">18–2</span>
+        <span style="display:block;margin-top:6px;font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)">Record</span>
+      </div>
+      <div style="background:var(--pink-soft);border:1px solid rgba(201,67,107,.25);border-radius:20px;padding:18px 26px">
+        <span style="display:block;font-family:var(--font-heading);font-weight:900;font-size:32px;line-height:1;color:var(--pink-deep)">Finals</span>
+        <span style="display:block;margin-top:6px;font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pink-deep)">Season Finish</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Upcoming" class="sec sec-y" style="background:var(--paper-2);padding:56px 32px">
+  <div class="up-block" style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:22px">
+    <div>
+      <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">Upcoming Games</span>
+      <p style="margin-top:12px;font-size:17px;line-height:1.6;color:var(--ink-3);max-width:520px">The 2026 season is in the books. The 2027 Pine Tree Men's Baseball League schedule will be posted here as soon as it's released.</p>
+    </div>
+    <a href="https://www.instagram.com/topshamuddertuggers/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(14,14,16,.22);color:var(--ink);font-weight:800;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="border-color:var(--ink);background:var(--white)">Follow the Herd</a>
+  </div>
+</section>
+
+<section data-screen-label="Results" class="sec sec-y" style="background:var(--paper);padding:80px 32px 104px">
+  <div style="max-width:1240px;margin:0 auto">
+    <h2 style="font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.02em;text-transform:uppercase">2026 Results</h2>
+
+    <sc-for list="{{ months }}" as="m" hint-placeholder-count="4">
+      <div style="margin-top:48px">
+        <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
+          <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
+          <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
+        </div>
+        <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
+          <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
+            <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
+              <div style="display:flex;flex-direction:column;line-height:1">
+                <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
+                <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
+              </div>
+              <div>
+                <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
+                <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
+              </div>
+              <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+
+    <p style="margin-top:36px;font-size:12.5px;letter-spacing:.04em;color:rgba(14,14,16,.45)">Doubleheaders are listed as two games. Home games are marked "vs." and away games "@".</p>
+  </div>
+</section>
+
+<footer class="u-dark sec" style="background:var(--ink);color:rgba(255,255,255,.6);padding:64px 32px 40px">
+  <div style="max-width:1240px;margin:0 auto">
+    <div class="foot-row" style="display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:16px">
+        <img src="assets/mascot.png" alt="" style="height:64px;width:auto">
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:20px;letter-spacing:.02em;text-transform:uppercase;color:var(--white)">Topsham Udder Tuggers</span>
+          <span style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;margin-top:8px">Est. 2024 &nbsp;•&nbsp; Topsham, Maine</span>
+        </span>
+      </div>
+      <nav style="display:flex;gap:26px;flex-wrap:wrap">
+        <a href="index.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
+        <a href="about.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
+        <a href="schedule.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
+        <a href="roster.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+        <a href="awards.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
+        <a href="sponsors.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Sponsors</a>
+      </nav>
+    </div>
+    <div id="follow" class="foot-social" style="margin-top:40px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--pink)">Follow the Herd</span>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.instagram.com/topshamuddertuggers/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1.5px solid rgba(255,255,255,.24);padding:10px 18px;border-radius:999px" style-hover="border-color:var(--pink);color:var(--pink)">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61557686881524" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1.5px solid rgba(255,255,255,.24);padding:10px 18px;border-radius:999px" style-hover="border-color:var(--pink);color:var(--pink)">Facebook</a>
+      </div>
+      <span style="font-size:12px;color:rgba(255,255,255,.45)">@topshamuddertuggers</span>
+    </div>
+    <div class="foot-legal" style="margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <span style="font-size:12px">© 2026 Topsham Udder Tuggers Baseball Club</span>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/ptbl.png" alt="Pine Tree Men's Baseball League" style="height:44px;width:44px;object-fit:contain;background:var(--white);border-radius:50%;padding:2px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">Member Club · Pine Tree Men's Baseball League</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const win = "display:inline-flex;align-items:center;font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.04em;color:#ffffff;background:var(--ink);padding:9px 16px;border-radius:999px;white-space:nowrap";
+    const loss = "display:inline-flex;align-items:center;font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.04em;color:var(--pink-deep);background:var(--pink-soft);border:1px solid rgba(201,67,107,.3);padding:8px 15px;border-radius:999px;white-space:nowrap";
+
+    const data = [
+      ["May 2026", "3–1", [
+        ["Sun", "3", "@ Red Sox", "Kents Hill School", "W 4–2", 1],
+        ["", "", "vs. Red Sox", "Kents Hill School", "W 7–6", 1],
+        ["Sun", "17", "@ Paris Panthers", "669 Norway Rd", "W 21–1", 1],
+        ["Sun", "31", "vs. Kennebec Sturgeons", "Mt. Ararat High School", "L 3–10", 0]
+      ]],
+      ["June 2026", "5–0", [
+        ["Sun", "7", "@ Lincoln County Cardinals", "Wiscasset Middle High School", "W 5–4", 1],
+        ["Sun", "14", "vs. Mid-Coast Yard Goats", "Mt. Ararat High School", "W 15–3", 1],
+        ["", "", "@ Mid-Coast Yard Goats", "Mt. Ararat High School", "W 8–1", 1],
+        ["Sun", "21", "vs. Central Maine Green Wave", "Mt. Ararat High School", "W 10–6", 1],
+        ["Sun", "28", "vs. Bethel Braves", "Mt. Ararat High School", "W 5–4", 1]
+      ]],
+      ["July 2026", "5–0", [
+        ["Sun", "12", "vs. Rangers", "Mt. Ararat High School", "W 17–0", 1],
+        ["", "", "@ Rangers", "Mt. Ararat High School", "W 21–0", 1],
+        ["Sun", "19", "@ Rumford Expos", "Hosmer Field Complex", "W 9–1", 1],
+        ["Sun", "26", "@ Turner Marlins", "Leavitt Area High School", "W 6–1", 1],
+        ["", "", "vs. Turner Marlins", "Leavitt Area High School", "W 14–4", 1]
+      ]],
+      ["August 2026", "5–1", [
+        ["Sun", "2", "vs. Monmouth Moose", "79 Foreside Rd", "W 11–1", 1],
+        ["", "", "@ Monmouth Moose", "79 Foreside Rd", "W 17–5", 1],
+        ["Sat", "15", "vs. Mid-Coast Yard Goats", "The American Legion", "W 11–1", 1],
+        ["Sun", "16", "vs. Rumford Expos", "The American Legion", "W 15–3", 1],
+        ["Sun", "23", "vs. Central Maine Green Wave", "7 Ballpark Way", "W 7–5", 1],
+        ["Sun", "30", "vs. Bethel Braves", "7 Ballpark Way", "L 9–11", 0]
+      ]]
+    ];
+
+    return {
+      months: data.map(([label, record, games]) => ({
+        label, record,
+        games: games.map(([dow, day, opponent, venue, result, won]) => ({
+          dow, day, opponent, venue, result,
+          resultStyle: won ? win : loss
+        }))
+      }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-cf2b694e-ed69-4293-b3ae-791489e89272/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0e10; --ink-2:#1b1b1e; --ink-3:#3c3c40;
+    --paper:#f7f4ef; --paper-2:#efeae1; --white:#ffffff;
+    --pink:#f7a8be; --pink-deep:#c9436b; --pink-soft:#fde7ee;
+    --gold:#f0c33c; --gold-deep:#a97f12;
+    --font-heading:"Figtree", system-ui, sans-serif;
+    --font-body:"Figtree", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body)}
+  h1,h2,h3,h4{font-family:var(--font-heading);font-weight:900;margin:0}
+  p{margin:0}
+  a{color:var(--pink-deep);text-decoration:none}
+  a:hover{color:var(--ink)}
+  ::selection{background:var(--pink);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--pink-deep);outline-offset:3px}
+  .u-nav a{color:rgba(255,255,255,.82)}
+  .u-nav a:hover{color:#fff}
+  .u-dark a{color:var(--white)}
+  .u-dark a:hover{color:var(--pink)}
+  .award-row{transition:background .18s ease}
+  .award-row:hover{background:var(--paper)}
+  @media (max-width:1060px){
+    .nav-row{flex-wrap:nowrap!important;gap:14px!important}
+    .nav-links{margin-left:auto!important;min-width:0;flex:1 1 auto;justify-content:flex-end;gap:14px!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .nav-links::-webkit-scrollbar{display:none}
+    .nav-links a{white-space:nowrap;flex:0 0 auto}
+  }
+  @media (max-width:700px){
+    .nav-brand-sub{display:none!important}
+    .nav-links{gap:12px!important}
+    .nav-links a{font-size:11px!important;letter-spacing:.1em!important}
+    .nav-cta{padding:9px 14px!important;font-size:10.5px!important}
+  }
+  @media (max-width:860px){
+
+    section{text-align:center}
+    section p{margin-left:auto!important;margin-right:auto!important}
+    section h1,section h2,section h3{text-align:center}
+    section div[style*="display:flex"]{justify-content:center!important}
+    section div[style*="align-items:flex-end"]{align-items:center!important}
+    section ul{align-items:center}
+    section li{text-align:left}
+    .u-lift{align-items:center}
+    .game-row,.award-row{text-align:center;justify-items:center}
+    .award-row{text-align:left!important;justify-items:stretch!important}
+    section:has(.award-row){text-align:left}
+    section:has(.award-row) h1,section:has(.award-row) h2,section:has(.award-row) h3{text-align:left}
+    section:not(:has(.award-row)) h1{text-align:center}
+    .eyebrow{justify-content:center!important}
+    section:not(:has(.award-row)) div[style*="display:flex"]{justify-content:center!important}
+    section[data-screen-label="Awards CTA"] > div{flex-direction:column;text-align:center;gap:24px!important}
+    .foot-row{flex-direction:column;align-items:center!important;text-align:center;gap:28px!important}
+    .foot-row nav{justify-content:center}
+    .foot-social{justify-content:center;text-align:center}
+    .foot-legal{justify-content:center!important;text-align:center}
+    .nav-row{padding-left:16px!important;padding-right:16px!important}
+    .nav-links a{white-space:nowrap}
+    .sec{padding-left:20px!important;padding-right:20px!important}
+    .sec-y{padding-top:56px!important;padding-bottom:56px!important}
+    .year-grid{grid-template-columns:1fr!important;gap:16px!important}
+  }
+  @media (max-width:600px){
+    .award-row{grid-template-columns:1fr!important;gap:6px!important}
+  }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--paper);overflow-x:clip">
+
+<header class="u-nav" style="position:sticky;top:0;z-index:40;background:rgba(201,67,107,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,16,.12)">
+  <div class="nav-row" style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto">
+      <img src="assets/mascot.png" alt="Udder Tuggers mascot" style="height:46px;width:auto;display:block">
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:var(--font-heading);font-weight:900;font-size:17px;letter-spacing:.02em;text-transform:uppercase;color:#fff">Udder Tuggers</span>
+        <span style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:4px" class="nav-brand-sub">Topsham, Maine</span>
+      </span>
+    </a>
+    <nav class="nav-links" style="margin-left:auto;display:flex;align-items:center;gap:30px">
+      <a href="index.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
+      <a href="about.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
+      <a href="schedule.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
+      <a href="roster.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+      <a href="awards.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:2px solid #fff;padding-bottom:3px">Awards</a>
+      <a href="sponsors.html" style="font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-deep);background:#fff;padding:11px 20px;border-radius:999px" class="nav-cta" style-hover="background:var(--ink);color:#fff">Sponsor Us</a>
+    </nav>
+  </div>
+</header>
+
+<section data-screen-label="Awards header" style="position:relative;background:var(--white);overflow:hidden">
+  <div style="position:absolute;inset:0;opacity:0.16;pointer-events:none">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
+      <g fill="#8d9096">
+        <path d="M120 90c60-40 150-30 190 20s10 120-40 150-140 40-190-10-20-120 40-160z"></path>
+        <path d="M520 40c80-20 160 30 150 100s-90 90-160 70-100-80-70-130 40-30 80-40z"></path>
+        <path d="M900 140c70-50 200-10 210 70s-80 140-170 130-150-70-130-140 50-40 90-60z"></path>
+        <path d="M80 460c90-60 180 10 190 90s-70 150-160 140-140-80-120-160 40-50 90-70z"></path>
+        <path d="M480 420c110-40 210 40 190 130s-120 130-210 100-110-110-70-170 50-50 90-60z"></path>
+        <path d="M860 520c80-30 190 30 190 110s-100 120-180 110-130-70-120-140 40-60 110-80z"></path>
+        <path d="M300 700c70-30 150 20 150 80s-70 100-140 90-110-60-90-110 40-50 80-60z"></path>
+      </g>
+    </svg>
+  </div>
+  <div class="sec sec-y" style="position:relative;max-width:1240px;margin:0 auto;padding:80px 32px 68px">
+    <div class="eyebrow" style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+      <span style="display:block;width:36px;height:2px;background:var(--pink-deep)"></span>
+      <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">League Honors</span>
+    </div>
+    <h1 style="font-size:clamp(48px,6.2vw,84px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase">Awards</h1>
+    <p style="margin-top:24px;max-width:540px;font-size:18px;line-height:1.62;color:var(--ink-3)">
+      Pine Tree Men's Baseball League honors earned by Udder Tuggers players, by season.
+    </p>
+  </div>
+</section>
+
+<section data-screen-label="Awards by year" class="sec sec-y" style="background:var(--paper);padding:80px 32px 104px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
+    <sc-for list="{{ years }}" as="y" hint-placeholder-count="3">
+      <div>
+        <div class="year-grid" style="display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start">
+          <div style="position:sticky;top:110px">
+            <h2 style="font-size:clamp(40px,4.4vw,58px);line-height:.9;letter-spacing:-.03em">{{ y.year }}</h2>
+          </div>
+          <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
+            <sc-for list="{{ y.awards }}" as="a" hint-placeholder-count="4">
+              <div class="award-row" style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
+                <span style="font-size:18px;font-weight:800;letter-spacing:-.01em">{{ a.name }}</span>
+                <span style="font-size:13.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">{{ a.award }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Awards CTA" class="sec sec-y" style="background:var(--paper-2);padding:88px 32px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap">
+    <div>
+      <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">The Herd</span>
+      <h2 style="margin-top:14px;font-size:clamp(30px,3.2vw,42px);line-height:1;letter-spacing:-.02em;text-transform:uppercase">See the Full Roster</h2>
+    </div>
+    <a href="roster.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--white);font-weight:800;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;padding:16px 30px;border-radius:999px" style-hover="background:var(--pink-deep)">Meet the Tuggers</a>
+  </div>
+</section>
+
+<footer class="u-dark sec" style="background:var(--ink);color:rgba(255,255,255,.6);padding:64px 32px 40px">
+  <div style="max-width:1240px;margin:0 auto">
+    <div class="foot-row" style="display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:16px">
+        <img src="assets/mascot.png" alt="" style="height:64px;width:auto">
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:20px;letter-spacing:.02em;text-transform:uppercase;color:var(--white)">Topsham Udder Tuggers</span>
+          <span style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;margin-top:8px">Est. 2024 &nbsp;•&nbsp; Topsham, Maine</span>
+        </span>
+      </div>
+      <nav style="display:flex;gap:26px;flex-wrap:wrap">
+        <a href="index.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
+        <a href="about.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
+        <a href="schedule.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
+        <a href="roster.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+        <a href="awards.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
+        <a href="sponsors.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Sponsors</a>
+      </nav>
+    </div>
+    <div id="follow" class="foot-social" style="margin-top:40px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--pink)">Follow the Herd</span>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.instagram.com/topshamuddertuggers/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1.5px solid rgba(255,255,255,.24);padding:10px 18px;border-radius:999px" style-hover="border-color:var(--pink);color:var(--pink)">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61557686881524" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1.5px solid rgba(255,255,255,.24);padding:10px 18px;border-radius:999px" style-hover="border-color:var(--pink);color:var(--pink)">Facebook</a>
+      </div>
+      <span style="font-size:12px;color:rgba(255,255,255,.45)">@topshamuddertuggers</span>
+    </div>
+    <div class="foot-legal" style="margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <span style="font-size:12px">© 2026 Topsham Udder Tuggers Baseball Club</span>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/ptbl.png" alt="Pine Tree Men's Baseball League" style="height:44px;width:44px;object-fit:contain;background:var(--white);border-radius:50%;padding:2px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">Member Club · Pine Tree Men's Baseball League</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const pinkChip = "color:var(--pink-deep);background:var(--pink-soft);border:1px solid rgba(201,67,107,.25);padding:8px 14px;border-radius:999px";
+    const inkChip = "color:var(--ink-3);background:var(--white);border:1px solid rgba(14,14,16,.14);padding:8px 14px;border-radius:999px";
+
+    const data = [
+      ["2026", "Finalists", inkChip, [
+        ["AJ Arroyo", "All-Star"],
+        ["Stephen Carter", "All-Star"],
+        ["Eric Cavers", "All-Star"],
+        ["Joshua Mackey", "All-Star"]
+      ]],
+      ["2025", "Champions", pinkChip, [
+        ["Niko Ruiz", "MVP"],
+        ["Niko Ruiz", "All-Star"],
+        ["Stephen Carter", "Cy Young"],
+        ["AJ Arroyo", "Rookie of the Year"],
+        ["Eric Cavers", "Rookie of the Year"],
+        ["Joshua Mackey", "All-Star"],
+        ["Peter Richard", "Manager of the Year"]
+      ]],
+      ["2024", "Finalists", inkChip, [
+        ["Brady Larson", "Cy Young"],
+        ["Brady Larson", "Rookie of the Year"],
+        ["Peter Richard", "Gold Glove"]
+      ]]
+    ];
+
+    return {
+      years: data.map(([year, finish, finishStyle, awards]) => ({
+        year, finish, finishStyle,
+        awards: awards.map(([name, award]) => ({ name, award }))
+      }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>
