@@ -121,6 +121,28 @@
       justify-content:center!important;
       text-align:center!important;
     }
+
+    /* Force the 2025 championship year to center on mobile */
+    .champ-card > div[style*="position:relative"]{
+      display:flex!important;
+      justify-content:center!important;
+      align-items:center!important;
+      width:100%!important;
+      text-align:center!important;
+    }
+    .champ-card > div[style*="position:relative"] > span{
+      display:block!important;
+      width:100%!important;
+      text-align:center!important;
+    }
+
+    /* Center sponsor packages CTA on mobile */
+    .tier-cta{
+      display:block!important;
+      width:100%!important;
+      text-align:center!important;
+      align-self:center!important;
+    }
   }
   @media (max-width:600px){
     .grid-4{grid-template-columns:1fr!important}
