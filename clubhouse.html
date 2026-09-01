@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-cf2b694e-ed69-4293-b3ae-791489e89272/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0e10; --ink-2:#1b1b1e; --ink-3:#3c3c40;
+    --paper:#f7f4ef; --paper-2:#efeae1; --white:#ffffff;
+    --pink:#f7a8be; --pink-deep:#c9436b; --pink-soft:#fde7ee;
+    --gold:#f0c33c; --gold-deep:#a97f12;
+    --font-heading:"Figtree", system-ui, sans-serif;
+    --font-body:"Figtree", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body)}
+  h1,h2,h3,h4{font-family:var(--font-heading);font-weight:900;margin:0}
+  p{margin:0}
+  a{color:var(--pink-deep);text-decoration:none}
+  a:hover{color:var(--ink)}
+  ::selection{background:var(--pink);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--pink-deep);outline-offset:3px}
+  .u-nav a{color:rgba(255,255,255,.82)}
+  .u-nav a:hover{color:#fff}
+  .u-dark a{color:var(--white)}
+  .u-dark a:hover{color:var(--pink)}
+  .u-lift{transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s ease}
+  .u-lift:hover{transform:translateY(-4px)}
+
+  @media (max-width:1000px){
+    .tier-list{flex-direction:row!important;flex-wrap:wrap;gap:8px!important}
+    .tier-mini{display:none!important}
+    .tier-num{display:none}
+    .star-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px!important;margin-top:24px!important}
+    .star-card{min-height:0!important;padding:16px!important;border-radius:20px!important;justify-content:flex-end!important;align-items:stretch!important;text-align:left!important}
+    .star-card > div{margin-top:0!important;padding-top:44px!important;text-align:left!important}
+    .star-card h3{font-size:16px!important;margin-top:6px!important;text-align:left!important}
+    .star-card span{text-align:left!important}
+    .star-num{font-size:70px!important;top:-12px!important;right:6px!important}
+    .star-dot{display:none!important}
+    .star-nick{display:block!important}
+    .star-card h3{font-size:20px!important}
+    .roster-head{flex-direction:column;align-items:center!important;text-align:center;gap:18px!important}
+    .tier-cta{margin-top:0!important;align-self:center;padding:10px 4px}
+    .nx-note{display:none}
+    .story-head{flex-direction:column;align-items:center!important;text-align:center;gap:18px!important}
+    .hero-copy{text-align:center}
+    .hero-copy > div{justify-content:center}
+    .hero-copy p{margin-left:auto!important;margin-right:auto!important}
+    .yr-title{margin-top:22px!important}
+    .grid-4{grid-template-columns:repeat(2,1fr)!important}
+    .grid-6{grid-template-columns:repeat(3,1fr)!important}
+    .grid-3{grid-template-columns:1fr!important}
+    .champ-card{transform:none!important}
+    .hero-grid{grid-template-columns:1fr!important;gap:24px!important;padding-top:56px!important;padding-bottom:56px!important}
+    .hero-art{min-height:0!important}
+    .hero-art img{width:78%!important;max-width:420px!important}
+    .cta-grid{grid-template-columns:1fr!important;padding:40px 28px!important}
+  }
+  @media (max-width:1060px){
+    .nav-row{flex-wrap:nowrap!important;gap:14px!important}
+    .nav-links{margin-left:auto!important;min-width:0;flex:1 1 auto;justify-content:flex-end;gap:14px!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .nav-links::-webkit-scrollbar{display:none}
+    .nav-links a{white-space:nowrap;flex:0 0 auto}
+  }
+  @media (max-width:700px){
+    .nav-brand-sub{display:none!important}
+    .nav-links{gap:12px!important}
+    .nav-links a{font-size:11px!important;letter-spacing:.1em!important}
+    .nav-cta{padding:9px 14px!important;font-size:10.5px!important}
+  }
+  @media (max-width:860px){
+
+    section{text-align:center}
+    section p{margin-left:auto!important;margin-right:auto!important}
+    section h1,section h2,section h3{text-align:center}
+    section div[style*="display:flex"]{justify-content:center!important}
+    section div[style*="align-items:flex-end"]{align-items:center!important}
+    section ul{align-items:center}
+    section li{text-align:left}
+    .u-lift{align-items:center}
+    .game-row,.award-row{text-align:center;justify-items:center}
+    .foot-row{flex-direction:column;align-items:center!important;text-align:center;gap:28px!important}
+    .foot-row nav{justify-content:center}
+    .foot-social{justify-content:center;text-align:center}
+    .foot-legal{justify-content:center!important;text-align:center}
+    .nav-row{padding-left:16px!important;padding-right:16px!important}
+    .nav-links a{white-space:nowrap}
+    .sec{padding-left:20px!important;padding-right:20px!important}
+    .sec-y{padding-top:64px!important;padding-bottom:64px!important}
+    .photo-ov{background:linear-gradient(180deg, rgba(14,14,16,.35) 0%, rgba(14,14,16,.85) 70%)!important}
+    .band-copy{text-align:left!important;align-items:flex-start!important}
+    .band-copy h2,.band-copy span,.band-copy a{text-align:left!important}
+  }
+  @media (max-width:600px){
+    .grid-4{grid-template-columns:1fr!important}
+    .grid-6{grid-template-columns:repeat(2,1fr)!important}
+    .stack-sm{flex-direction:column!important;align-items:flex-start!important}
+  }
+
+  @keyframes utSplashOut{0%,55%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+  @keyframes utMarkIn{0%{opacity:0;transform:scale(.88)}45%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1.03)}}
+  .ut-splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--ink);animation:utSplashOut 1.5s cubic-bezier(.4,0,.2,1) forwards;pointer-events:none}
+  .ut-splash img{width:min(38vw,240px);animation:utMarkIn 1.5s cubic-bezier(.2,.7,.3,1) forwards}
+  @media (prefers-reduced-motion:reduce){.ut-splash{display:none}}
+
+  .ch-head{text-align:center}
+  .ch-head .eyebrow{justify-content:center}
+  .ch-head p{margin-left:auto;margin-right:auto}
+  .ch-btns{justify-content:center!important}
+  @media (min-width:861px){
+    .ch-hero{text-align:left}
+    .ch-hero .eyebrow{justify-content:flex-start}
+    .ch-hero p{margin-left:0;margin-right:0}
+    .ch-hero .ch-btns{justify-content:flex-start!important}
+  }
+  @media (max-width:900px){
+    .card-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px!important}
+  }
+  @media (max-width:480px){
+    .card-grid{grid-template-columns:1fr!important}
+  }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--paper);overflow-x:clip">
+
+<div class="ut-splash" aria-hidden="true"><img src="assets/mascot.png" alt=""></div>
+
+<header class="u-nav" style="position:sticky;top:0;z-index:40;background:rgba(201,67,107,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,16,.12)">
+  <div class="nav-row" style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto">
+      <img src="assets/mascot.png" alt="Udder Tuggers mascot" style="height:46px;width:auto;display:block">
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:var(--font-heading);font-weight:900;font-size:17px;letter-spacing:.02em;text-transform:uppercase;color:#fff">Udder Tuggers</span>
+        <span style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:4px" class="nav-brand-sub">Topsham, Maine</span>
+      </span>
+    </a>
+    <nav class="nav-links" style="margin-left:auto;display:flex;align-items:center;gap:30px">
+      <a href="index.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
+      <a href="about.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
+      <a href="schedule.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
+      <a href="roster.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+      <a href="awards.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
+      <a href="clubhouse.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:2px solid #fff;padding-bottom:3px">Clubhouse</a>
+      <a href="sponsors.html" style="font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-deep);background:#fff;padding:11px 20px;border-radius:999px" class="nav-cta" style-hover="background:var(--ink);color:#fff">Sponsor Us</a>
+    </nav>
+  </div>
+</header>
+
+<section data-screen-label="Clubhouse header" style="position:relative;background:var(--white);overflow:hidden">
+  <div style="position:absolute;inset:0;opacity:0.16;pointer-events:none">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
+      <g fill="#8d9096">
+        <path d="M120 90c60-40 150-30 190 20s10 120-40 150-140 40-190-10-20-120 40-160z"></path>
+        <path d="M520 40c80-20 160 30 150 100s-90 90-160 70-100-80-70-130 40-30 80-40z"></path>
+        <path d="M900 140c70-50 200-10 210 70s-80 140-170 130-150-70-130-140 50-40 90-60z"></path>
+        <path d="M80 460c90-60 180 10 190 90s-70 150-160 140-140-80-120-160 40-50 90-70z"></path>
+        <path d="M480 420c110-40 210 40 190 130s-120 130-210 100-110-110-70-170 50-50 90-60z"></path>
+        <path d="M860 520c80-30 190 30 190 110s-100 120-180 110-130-70-120-140 40-60 110-80z"></path>
+        <path d="M300 700c70-30 150 20 150 80s-70 100-140 90-110-60-90-110 40-50 80-60z"></path>
+      </g>
+    </svg>
+  </div>
+  <div class="sec sec-y ch-head ch-hero" style="position:relative;max-width:1240px;margin:0 auto;padding:80px 32px 60px">
+    <div class="eyebrow" style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+      <span style="display:block;width:36px;height:2px;background:var(--pink-deep)"></span>
+      <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">Odds &amp; Ends</span>
+    </div>
+    <h1 style="font-size:clamp(48px,6.2vw,84px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase">Clubhouse</h1>
+    <p style="margin-top:22px;max-width:520px;font-size:18px;line-height:1.62;color:var(--ink-3)">
+      Everything that doesn't fit on a stat sheet.
+    </p>
+    <div class="ch-btns" style="margin-top:34px;display:flex;flex-wrap:wrap;gap:10px">
+      <a href="#cards" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--white);background:var(--ink);padding:13px 24px;border-radius:999px" style-hover="background:var(--pink-deep)">Baseball Cards</a>
+      <a href="#music" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);border:1.5px solid rgba(14,14,16,.22);padding:12px 22px;border-radius:999px" style-hover="border-color:var(--ink);background:var(--paper)">Music</a>
+    </div>
+  </div>
+</section>
+
+<section id="cards" data-screen-label="Baseball Cards" class="sec sec-y" style="background:var(--paper);padding:88px 32px">
+  <div class="ch-head" style="max-width:1240px;margin:0 auto">
+    <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">2026 Set</span>
+    <h2 style="margin-top:14px;font-size:clamp(32px,3.6vw,48px);line-height:1;letter-spacing:-.02em;text-transform:uppercase">Baseball Cards</h2>
+    <p style="margin-top:16px;max-width:520px;font-size:16.5px;line-height:1.62;color:var(--ink-3)">
+      One card per Tugger. No trades.
+    </p>
+    <div class="card-grid" style="margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="17">
+        <button type="button" onClick="{{ c.open }}" class="u-lift" style="position:relative;text-align:left;cursor:pointer;font-family:var(--font-body);background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:18px;padding:18px 18px 16px;box-shadow:0 3px 14px rgba(14,14,16,.05);overflow:hidden;display:flex;flex-direction:column;gap:6px" style-hover="border-color:var(--pink-deep)">
+          <span style="position:absolute;top:-14px;right:6px;font-family:var(--font-heading);font-weight:900;font-size:64px;line-height:1;color:rgba(14,14,16,.06);letter-spacing:-.05em">{{ c.number }}</span>
+          <span style="position:relative;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--pink-deep)">{{ c.pos }}</span>
+          <span style="position:relative;font-family:var(--font-heading);font-weight:900;font-size:17px;line-height:1.1;letter-spacing:-.01em;text-transform:uppercase;color:var(--ink)">{{ c.name }}</span>
+          <span style="position:relative;font-family:var(--font-heading);font-weight:900;font-style:italic;font-size:12px;color:var(--pink-deep)">“{{ c.nick }}”</span>
+        </button>
+      </sc-for>
+    </div>
+    <p style="margin-top:22px;font-size:12.5px;letter-spacing:.06em;color:rgba(14,14,16,.42)">Tap a name to see the card.</p>
+
+    <sc-if value="{{ active }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:200;background:rgba(14,14,16,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;cursor:zoom-out">
+        <div style="position:relative;max-width:1100px;width:100%">
+          <img src="{{ activeSrc }}" alt="{{ activeName }}" style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.5)">
+          <button type="button" onClick="{{ close }}" aria-label="Close" style="position:absolute;top:-16px;right:-16px;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;background:var(--pink-deep);color:#fff;font-size:20px;font-weight:800;line-height:1;box-shadow:0 6px 18px rgba(0,0,0,.35)">×</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<section id="music" data-screen-label="Music" class="sec sec-y" style="background:var(--paper-2);padding:88px 32px">
+  <div class="ch-head" style="max-width:1240px;margin:0 auto">
+    <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">Original Songs</span>
+    <h2 style="margin-top:14px;font-size:clamp(32px,3.6vw,48px);line-height:1;letter-spacing:-.02em;text-transform:uppercase">Music</h2>
+    <p style="margin-top:16px;max-width:520px;font-size:16.5px;line-height:1.62;color:var(--ink-3)">
+      Yes, there are songs. Yes, they're on Spotify.
+    </p>
+    <div style="margin-top:36px;border-radius:20px;overflow:hidden;box-shadow:0 4px 18px rgba(14,14,16,.10)">
+      <iframe src="https://open.spotify.com/embed/artist/0kH0UAWSd9exFgWLWNUjJu?utm_source=generator&theme=0" width="100%" height="420" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="display:block;border:0"></iframe>
+    </div>
+    <div style="margin-top:24px;display:flex;justify-content:center">
+      <a href="https://open.spotify.com/artist/0kH0UAWSd9exFgWLWNUjJu" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--white);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:var(--pink-deep)">Open in Spotify</a>
+    </div>
+  </div>
+</section>
+
+<footer class="u-dark sec" style="background:var(--ink);color:rgba(255,255,255,.6);padding:64px 32px 40px">
+  <div style="max-width:1240px;margin:0 auto">
+    <div class="foot-row" style="display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:16px">
+        <img src="assets/mascot.png" alt="" style="height:64px;width:auto">
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:20px;letter-spacing:.02em;text-transform:uppercase;color:var(--white)">Topsham Udder Tuggers</span>
+          <span style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;margin-top:8px">Est. 2024 &nbsp;•&nbsp; Topsham, Maine</span>
+        </span>
+      </div>
+      <nav style="display:flex;gap:26px;flex-wrap:wrap">
+        <a href="index.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
+        <a href="about.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
+        <a href="schedule.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
+        <a href="roster.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+        <a href="awards.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
+        <a href="clubhouse.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Clubhouse</a>
+        <a href="sponsors.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Sponsors</a>
+      </nav>
+    </div>
+    <div id="follow" class="foot-social" style="margin-top:40px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--pink)">Follow the Herd</span>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.instagram.com/topshamuddertuggers/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1.5px solid rgba(255,255,255,.24);padding:10px 18px;border-radius:999px" style-hover="border-color:var(--pink);color:var(--pink)">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61557686881524" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1.5px solid rgba(255,255,255,.24);padding:10px 18px;border-radius:999px" style-hover="border-color:var(--pink);color:var(--pink)">Facebook</a>
+      </div>
+      <span style="font-size:12px;color:rgba(255,255,255,.45)">@topshamuddertuggers</span>
+    </div>
+    <div class="foot-legal" style="margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <span style="font-size:12px">© 2026 Topsham Udder Tuggers Baseball Club</span>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/ptbl.png" alt="Pine Tree Men's Baseball League" style="height:44px;width:44px;object-fit:contain;background:var(--white);border-radius:50%;padding:2px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">Member Club · Pine Tree Men's Baseball League</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: null };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === "Escape") this.setState({ active: null }); };
+    document.addEventListener("keydown", this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener("keydown", this._esc); }
+  renderVals() {
+    const raw = [
+      ["albert", "Steven Albert", "28", "P / 1B / OF", "Dairy Daddy"],
+      ["aj", "AJ Arroyo", "92", "OF / 3B / 1B", "Muscle Milk"],
+      ["carter", "Stephen Carter", "44", "P / 1B", "Whole Milk"],
+      ["cavers", "Eric Cavers", "94", "C / P", "Cavers & Cream"],
+      ["cam", "Cam Delisle", "5", "OF", "Raw Milk"],
+      ["dunk", "Nate Duncklee", "19", "OF", "Mr. Moo"],
+      ["drew", "Drew Kempf", "23", "2B", "Salted Butter"],
+      ["brady", "Brady Larson", "11", "Pitcher", "The Churner"],
+      ["mackey", "Josh Mackey", "13", "SS", "Hairy Milk"],
+      ["massey", "Josh Massey", "26", "C", "Heavy Cream"],
+      ["chad", "Chad Mezoian", "27", "3B / 1B / P", "Whipped Cream"],
+      ["parker", "John Parker", "47", "P / 1B", "Skim Milk"],
+      ["alberto", "Alberto Peña Rojas", "4", "OF", "Dulce de Leche"],
+      ["pete", "Peter Richard", "10", "OF", "The Milkman"],
+      ["niko", "Niko Ruiz", "9", "2B / C / P", "Chocolate Milk"],
+      ["sosa", "Sosa Telemaco", "99", "P", "Jalapeño Milk"],
+      ["verrill", "Jerod Verrill", "93", "C / 3B", "Ice Cream"]
+    ];
+    const cards = raw.map(([slug, name, number, pos, nick]) => ({
+      slug, name, number, pos, nick,
+      open: () => this.setState({ active: slug })
+    }));
+    const found = raw.find((r) => r[0] === this.state.active);
+    return {
+      cards,
+      active: !!found,
+      activeSrc: found ? "assets/cards/" + found[0] + ".jpg" : "",
+      activeName: found ? found[1] + " — Backyard Baseball card" : "",
+      close: () => this.setState({ active: null })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
