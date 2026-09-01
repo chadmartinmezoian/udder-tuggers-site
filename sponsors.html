@@ -84,10 +84,18 @@
     .tier-grid{grid-template-columns:1fr!important}
     .grid-5{grid-template-columns:repeat(2,1fr)!important}
   }
+
+  @keyframes utSplashOut{0%,55%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+  @keyframes utMarkIn{0%{opacity:0;transform:scale(.88)}45%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1.03)}}
+  .ut-splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--ink);animation:utSplashOut 1.5s cubic-bezier(.4,0,.2,1) forwards;pointer-events:none}
+  .ut-splash img{width:min(38vw,240px);animation:utMarkIn 1.5s cubic-bezier(.2,.7,.3,1) forwards}
+  @media (prefers-reduced-motion:reduce){.ut-splash{display:none}}
 </style>
 </helmet>
 
 <div style="min-height:100vh;background:var(--paper);overflow-x:clip">
+<div class="ut-splash" aria-hidden="true"><img src="assets/mascot.png" alt=""></div>
+
 
 <header class="u-nav" style="position:sticky;top:0;z-index:40;background:rgba(201,67,107,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,16,.12)">
   <div class="nav-row" style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px">
