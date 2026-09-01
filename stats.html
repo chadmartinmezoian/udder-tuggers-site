@@ -156,7 +156,13 @@
   .stats-tab{appearance:none;border:1.5px solid rgba(14,14,16,.14);background:var(--white);color:var(--ink-3);border-radius:999px;padding:11px 22px;font-family:var(--font-body);font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:.18s ease}
   .stats-tab:hover{border-color:var(--pink-deep);color:var(--pink-deep)}
   .stats-tab.is-active{background:var(--ink);border-color:var(--ink);color:var(--white)}
-  .stats-panel[hidden]{display:none!important}
+  .stats-toggle-input{position:absolute;opacity:0;pointer-events:none}
+  #stats-batting:checked ~ #batting-panel{display:block}
+  #stats-batting:checked ~ #pitching-panel{display:none}
+  #stats-pitching:checked ~ #batting-panel{display:none}
+  #stats-pitching:checked ~ #pitching-panel{display:block}
+  #stats-batting:checked ~ .stats-tabs-wrap label[for="stats-batting"],
+  #stats-pitching:checked ~ .stats-tabs-wrap label[for="stats-pitching"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
   @media (max-width:860px){.stats-tabs{padding-left:20px;padding-right:20px;justify-content:center}}
 
 </style>
@@ -229,20 +235,23 @@
     </svg>
   </div>
   <div class="sec sec-y" style="position:relative;max-width:1240px;margin:0 auto;padding:80px 32px 68px">
-    <div class="eyebrow" style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
-      <span style="display:block;width:36px;height:2px;background:var(--pink-deep)"></span>
-      <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">2026 Season</span>
-    </div>
     <h1 style="font-size:clamp(48px,6.2vw,84px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase">Stats</h1>
     <p style="margin-top:22px;max-width:520px;font-size:18px;line-height:1.62;color:var(--ink-3)">
-      Final offensive numbers from the 2026 season. Twenty games, a .393 team average.
+      Season-by-season batting and pitching stats for the Udder Tuggers.
     </p>
   </div>
 </section>
 
-<div class="stats-tabs-wrap" data-screen-label="Stats Type Tabs"><div class="stats-tabs" role="tablist" aria-label="Stat type"><button class="stats-tab is-active" id="batting-tab" type="button" role="tab" aria-selected="true" aria-controls="batting-panel" data-stats-tab="batting">Batting</button><button class="stats-tab" id="pitching-tab" type="button" role="tab" aria-selected="false" aria-controls="pitching-panel" data-stats-tab="pitching">Pitching</button></div></div>
+<input class="stats-toggle-input" type="radio" name="stats-view" id="stats-batting" checked>
+<input class="stats-toggle-input" type="radio" name="stats-view" id="stats-pitching">
+<div class="stats-tabs-wrap" data-screen-label="Stats Type Tabs">
+  <div class="stats-tabs" role="tablist" aria-label="Stat type">
+    <label class="stats-tab" for="stats-batting" role="tab">Batting</label>
+    <label class="stats-tab" for="stats-pitching" role="tab">Pitching</label>
+  </div>
+</div>
 
-<div id="batting-panel" class="stats-panel" role="tabpanel" aria-labelledby="batting-tab">
+<div id="batting-panel" class="stats-panel" role="tabpanel">
 <section data-screen-label="2026 Batting" class="sec sec-y" style="background:var(--paper);padding:72px 32px 104px">
   <div style="max-width:1240px;margin:0 auto">
     <div class="stat-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
@@ -327,7 +336,7 @@
 </section>
 
 </div>
-<div id="pitching-panel" class="stats-panel" role="tabpanel" aria-labelledby="pitching-tab" hidden>
+<div id="pitching-panel" class="stats-panel" role="tabpanel">
   <section data-screen-label="2026 Pitching" class="sec sec-y" style="background:var(--paper);padding:72px 32px 104px">
   <div style="max-width:1240px;margin:0 auto">
     <div class="stat-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
@@ -449,17 +458,6 @@ class Component extends DCLogic {
 </script>
 
 
-<script>
-(function(){
-  const tabs=document.querySelectorAll('[data-stats-tab]');
-  const panels={batting:document.getElementById('batting-panel'),pitching:document.getElementById('pitching-panel')};
-  tabs.forEach(btn=>btn.addEventListener('click',()=>{
-    const target=btn.dataset.statsTab;
-    tabs.forEach(t=>{const active=t===btn;t.classList.toggle('is-active',active);t.setAttribute('aria-selected',active?'true':'false');});
-    Object.entries(panels).forEach(([key,panel])=>{if(panel) panel.hidden=key!==target;});
-  }));
-})();
-</script>
 
 </body>
 </html>
