@@ -148,6 +148,7 @@
     .grid-4{grid-template-columns:1fr!important}
     .grid-6{grid-template-columns:repeat(2,1fr)!important}
     .stack-sm{flex-direction:column!important;align-items:flex-start!important}
+    .all-time-record{font-size:clamp(36px,10.5vw,44px)!important;letter-spacing:-.04em!important;white-space:nowrap!important}
   }
 
   @keyframes utSplashOut{0%,55%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
@@ -325,13 +326,11 @@
     </svg>
   </div>
   <div style="position:relative;max-width:1240px;margin:0 auto">
-    <div class="story-head" style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;text-align:center">
-  <div style="width:100%">
-    <h2 style="font-size:clamp(40px,4.6vw,64px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;text-align:center">
-      The Story So Far
-    </h2>
-  </div>
-</div>
+    <div class="story-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div>
+        <h2 style="font-size:clamp(40px,4.6vw,64px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase">The Story So Far</h2>
+      </div>
+    </div>
 
     <div class="grid-3" style="margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
       <div class="u-lift" style="position:relative;background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:28px;padding:38px 32px 32px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.05);text-align:center">
@@ -363,7 +362,7 @@
     </div>
 
     <div style="margin:64px auto 0;text-align:center">
-      <div style="font-family:var(--font-heading);font-weight:900;font-size:clamp(58px,7vw,96px);line-height:.9;letter-spacing:-.045em;text-transform:uppercase">52–5 <span style="color:var(--pink-deep)">All-Time</span></div>
+      <div class="all-time-record" style="font-family:var(--font-heading);font-weight:900;font-size:clamp(58px,7vw,96px);line-height:.9;letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap"><span id="all-time-record">52–5</span> <span style="color:var(--pink-deep)">All-Time</span></div>
       <p style="margin:22px auto 0;max-width:820px;text-align:center;font-family:var(--font-heading);font-weight:900;font-size:clamp(22px,2.4vw,32px);line-height:1.18;letter-spacing:-.02em;text-wrap:balance">
         Founded in 2024 and all we've done is win.<br><span style="color:var(--pink-deep)">We would like to apologize to nobody.</span>
       </p>
@@ -555,6 +554,32 @@
 
 </x-dc>
 
+
+<script>
+  // Keep the homepage all-time record synced with completed games on schedule.html.
+  fetch('schedule.html', { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) throw new Error('Could not load schedule');
+      return response.text();
+    })
+    .then(html => {
+      const results = [...html.matchAll(/"([WL])\s+\d+[–-]\d+"/g)];
+      if (!results.length) return;
+
+      let wins = 0;
+      let losses = 0;
+      results.forEach(match => {
+        if (match[1] === 'W') wins += 1;
+        if (match[1] === 'L') losses += 1;
+      });
+
+      const record = document.getElementById('all-time-record');
+      if (record) record.textContent = `${wins}–${losses}`;
+    })
+    .catch(() => {
+      // Leave the hard-coded fallback record in place if schedule.html cannot be read.
+    });
+</script>
 
 </body>
 </html>
