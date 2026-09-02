@@ -124,6 +124,21 @@
     .nav-links{display:none!important}
   }
 
+  .season-block{margin-top:48px}
+  .season-summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 26px;background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;cursor:pointer;list-style:none;box-shadow:0 2px 10px rgba(14,14,16,.04)}
+  .season-summary::-webkit-details-marker{display:none}
+  .season-summary-left{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .season-summary h2{font-size:clamp(26px,3vw,40px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+  .season-summary-meta{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+  .season-chevron{font-size:26px;font-weight:900;color:var(--pink-deep);transition:transform .2s ease}
+  details[open] > .season-summary .season-chevron{transform:rotate(90deg)}
+  .season-content{padding-top:6px}
+  @media (max-width:640px){
+    .season-summary{padding:18px 20px}
+    .season-summary-left{justify-content:center!important;width:100%}
+    .season-chevron{position:absolute;right:20px}
+  }
+
 </style>
 </helmet>
 
@@ -224,31 +239,111 @@
 
 <section data-screen-label="Results" class="sec sec-y" style="background:var(--paper);padding:80px 32px 104px">
   <div style="max-width:1240px;margin:0 auto">
-    <h2 style="font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.02em;text-transform:uppercase">2026 Results</h2>
 
-    <sc-for list="{{ months }}" as="m" hint-placeholder-count="4">
-      <div style="margin-top:48px">
-        <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
-          <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
-          <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
+    <details open>
+      <summary class="season-summary">
+        <div class="season-summary-left">
+          <h2>2026 Results</h2>
+          <span class="season-summary-meta">18–2 · Finalists</span>
         </div>
-        <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
-          <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
-            <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
-              <div style="display:flex;flex-direction:column;line-height:1">
-                <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
-                <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
-              </div>
-              <div>
-                <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
-                <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
-              </div>
-              <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
+        <span class="season-chevron">›</span>
+      </summary>
+      <div class="season-content">
+        <sc-for list="{{ months2026 }}" as="m" hint-placeholder-count="4">
+          <div style="margin-top:48px">
+            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
+              <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
+              <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
             </div>
-          </sc-for>
-        </div>
+            <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
+              <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
+                <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
+                  <div style="display:flex;flex-direction:column;line-height:1">
+                    <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
+                    <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
+                  </div>
+                  <div>
+                    <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
+                    <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
+                  </div>
+                  <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
       </div>
-    </sc-for>
+    </details>
+
+    <details class="season-block">
+      <summary class="season-summary">
+        <div class="season-summary-left">
+          <h2>2025 Results</h2>
+          <span class="season-summary-meta">17–1 · Champions</span>
+        </div>
+        <span class="season-chevron">›</span>
+      </summary>
+      <div class="season-content">
+        <sc-for list="{{ months2025 }}" as="m" hint-placeholder-count="4">
+          <div style="margin-top:48px">
+            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
+              <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
+              <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
+            </div>
+            <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
+              <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
+                <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
+                  <div style="display:flex;flex-direction:column;line-height:1">
+                    <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
+                    <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
+                  </div>
+                  <div>
+                    <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
+                    <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
+                  </div>
+                  <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </details>
+
+    <details class="season-block">
+      <summary class="season-summary">
+        <div class="season-summary-left">
+          <h2>2024 Results</h2>
+          <span class="season-summary-meta">17–2 · Finalists</span>
+        </div>
+        <span class="season-chevron">›</span>
+      </summary>
+      <div class="season-content">
+        <sc-for list="{{ months2024 }}" as="m" hint-placeholder-count="4">
+          <div style="margin-top:48px">
+            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
+              <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
+              <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
+            </div>
+            <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
+              <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
+                <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
+                  <div style="display:flex;flex-direction:column;line-height:1">
+                    <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
+                    <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
+                  </div>
+                  <div>
+                    <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
+                    <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
+                  </div>
+                  <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </details>
 
     <p style="margin-top:36px;font-size:12.5px;letter-spacing:.04em;color:rgba(14,14,16,.45)">Doubleheaders are listed as two games. Home games are marked "vs." and away games "@".</p>
   </div>
@@ -302,7 +397,7 @@ class Component extends DCLogic {
     const win = "display:inline-flex;align-items:center;font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.04em;color:#ffffff;background:var(--ink);padding:9px 16px;border-radius:999px;white-space:nowrap";
     const loss = "display:inline-flex;align-items:center;font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.04em;color:var(--pink-deep);background:var(--pink-soft);border:1px solid rgba(201,67,107,.3);padding:8px 15px;border-radius:999px;white-space:nowrap";
 
-    const data = [
+    const data2026 = [
       ["May 2026", "3–1", [
         ["Sun", "3", "@ Red Sox", "Kents Hill School", "W 4–2", 1],
         ["", "", "vs. Red Sox", "Kents Hill School", "W 7–6", 1],
@@ -333,14 +428,77 @@ class Component extends DCLogic {
       ]]
     ];
 
-    return {
-      months: data.map(([label, record, games]) => ({
-        label, record,
-        games: games.map(([dow, day, opponent, venue, result, won]) => ({
-          dow, day, opponent, venue, result,
-          resultStyle: won ? win : loss
-        }))
+    const data2025 = [
+      ["May 2025", "2–0", [
+        ["Sun", "18", "@ Lincoln County Cardinals", "", "W 2–0", 1],
+        ["", "", "vs. Lincoln County Cardinals", "", "W 8–1", 1]
+      ]],
+      ["June 2025", "7–1", [
+        ["Sun", "1", "@ Kennebec Sturgeons", "", "W 13–0", 1],
+        ["", "", "vs. Kennebec Sturgeons", "", "W 4–3", 1],
+        ["Sun", "8", "vs. Mid-Maine River Pigs", "", "W 8–3", 1],
+        ["", "", "@ Mid-Maine River Pigs", "", "W 18–2", 1],
+        ["Sun", "15", "@ Brunswick Yard Goats", "", "W 17–1", 1],
+        ["Sun", "22", "@ Bethel Braves", "", "L 1–7", 0],
+        ["Sun", "29", "vs. Bangor Mets", "", "W 8–7", 1],
+        ["", "", "@ Bangor Mets", "", "W 10–3", 1]
+      ]],
+      ["July 2025", "4–0", [
+        ["Sun", "6", "vs. Lincoln County Cardinals", "", "W 8–3", 1],
+        ["Sun", "13", "vs. Kennebec Sturgeons", "", "W 27–0", 1],
+        ["Sun", "27", "vs. Brunswick Yard Goats", "", "W 14–6", 1],
+        ["", "", "@ Brunswick Yard Goats", "", "W 14–0", 1]
+      ]],
+      ["August 2025", "4–0", [
+        ["Sun", "3", "@ Mid-Maine River Pigs", "", "W 6–1", 1],
+        ["Sun", "10", "vs. Turner Marlins", "", "W 16–4", 1],
+        ["Sun", "17", "vs. Green Wave", "", "W 14–10", 1],
+        ["Sun", "24", "vs. Bethel Braves", "", "W 4–3", 1]
+      ]]
+    ];
+
+    const data2024 = [
+      ["May 2024", "3–0", [
+        ["Sun", "5", "vs. Kennebec Sturgeons", "at 71 Dragon Drive", "W 12–0", 1],
+        ["Sun", "19", "vs. Mid-Maine River Pigs", "at 71 Dragon Drive", "W 14–4", 1],
+        ["", "", "@ Mid-Maine River Pigs", "at 71 Dragon Drive", "W 5–4", 1]
+      ]],
+      ["June 2024", "5–1", [
+        ["Sun", "2", "@ Panthers", "at 103 Alpine St", "W 10–4", 1],
+        ["Sun", "9", "@ Bangor Mets", "at Lancey Street", "W 15–0", 1],
+        ["", "", "vs. Bangor Mets", "at Lancey Street", "W 8–0", 1],
+        ["Sun", "16", "@ Braves", "at 284 Walkers Mills Rd", "W 5–3", 1],
+        ["Sun", "23", "vs. Turner Marlins", "at 71 Dragon Drive", "W 9–0", 1],
+        ["Sun", "30", "vs. Rumford Expos", "at 71 Dragon Drive", "L 2–3", 0]
+      ]],
+      ["July 2024", "6–0", [
+        ["Sun", "7", "@ Hippach Hounds", "at 300 Main St", "W 10–0", 1],
+        ["Sun", "14", "@ Winthrop Red Sox", "at 211 Rambler Rd", "W 6–3", 1],
+        ["", "", "vs. Winthrop Red Sox", "at 211 Rambler Rd", "W 3–0", 1],
+        ["Sun", "21", "vs. Central Maine Green Wave", "at 66 Republic Ave", "W 9–0", 1],
+        ["", "", "@ Central Maine Green Wave", "at 66 Republic Ave", "W 9–0", 1],
+        ["Sun", "28", "vs. Brunswick Yard Goats", "at 66 Republic Ave", "W 24–2", 1]
+      ]],
+      ["August 2024", "3–1", [
+        ["Sun", "4", "@ Turner Marlins", "at 66 Republic Ave", "W 9–0", 1],
+        ["Sun", "11", "vs. Kennebec Sturgeons", "at 66 Republic Ave", "W 14–1", 1],
+        ["Sun", "18", "vs. Winthrop Red Sox", "at 66 Republic Ave", "W 9–6", 1],
+        ["Sun", "25", "vs. Braves", "at 7 Ballpark Way", "L 2–8", 0]
+      ]]
+    ];
+
+    const mapMonths = (data) => data.map(([label, record, games]) => ({
+      label, record,
+      games: games.map(([dow, day, opponent, venue, result, won]) => ({
+        dow, day, opponent, venue, result,
+        resultStyle: won ? win : loss
       }))
+    }));
+
+    return {
+      months2026: mapMonths(data2026),
+      months2025: mapMonths(data2025),
+      months2024: mapMonths(data2024)
     };
   }
 }
