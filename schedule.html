@@ -71,8 +71,26 @@
     .up-block{align-items:center!important}
   }
   @media (max-width:640px){
-    .game-row{grid-template-columns:52px 1fr!important;grid-row-gap:10px!important;padding:16px 18px!important}
-    .game-res{grid-column:2!important;justify-self:start!important}
+    .game-row{
+      grid-template-columns:46px minmax(0,1fr) auto!important;
+      grid-row-gap:0!important;
+      column-gap:10px!important;
+      padding:12px 14px!important;
+      min-height:64px;
+      text-align:left!important;
+      justify-items:stretch!important;
+    }
+    .game-row > div:first-child{align-items:flex-start!important;text-align:left!important}
+    .game-row > div:nth-child(2){min-width:0;text-align:left!important}
+    .game-opponent{font-size:15px!important;line-height:1.15!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .game-venue{display:none!important}
+    .game-res{
+      grid-column:3!important;
+      justify-self:end!important;
+      align-self:center!important;
+      font-size:12.5px!important;
+      padding:7px 11px!important;
+    }
   }
 
   @keyframes utSplashOut{0%,55%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
@@ -263,8 +281,8 @@
                     <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
                   </div>
                   <div>
-                    <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
-                    <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
+                    <span class="game-opponent" style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
+                    <span class="game-venue" style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
                   </div>
                   <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
                 </div>
@@ -298,8 +316,8 @@
                     <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
                   </div>
                   <div>
-                    <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
-                    <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
+                    <span class="game-opponent" style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
+                    <span class="game-venue" style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
                   </div>
                   <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
                 </div>
@@ -333,8 +351,8 @@
                     <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
                   </div>
                   <div>
-                    <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
-                    <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
+                    <span class="game-opponent" style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
+                    <span class="game-venue" style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
                   </div>
                   <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
                 </div>
