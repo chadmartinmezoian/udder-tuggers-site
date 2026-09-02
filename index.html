@@ -370,80 +370,6 @@
   </div>
 </section>
 
-<script>
-(function () {
-  const record = document.getElementById('all-time-record');
-  const winsEl = document.getElementById('all-time-wins');
-  const lossesEl = document.getElementById('all-time-losses');
-  if (!record || !winsEl || !lossesEl) return;
-
-  let targetWins = Number(winsEl.textContent) || 52;
-  let targetLosses = Number(lossesEl.textContent) || 5;
-  let started = false;
-
-  // Hold at zero until the record comes into view.
-  winsEl.textContent = '0';
-  lossesEl.textContent = '0';
-
-  function countTo(el, getTarget, duration) {
-    const start = performance.now();
-    function frame(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = String(Math.round(getTarget() * eased));
-      if (progress < 1) {
-        requestAnimationFrame(frame);
-      } else {
-        el.textContent = String(getTarget());
-      }
-    }
-    requestAnimationFrame(frame);
-  }
-
-  function startTally() {
-    if (started) return;
-    started = true;
-    countTo(winsEl, () => targetWins, 1250);
-    countTo(lossesEl, () => targetLosses, 1250);
-  }
-
-  // Pull the real all-time record from schedule.html when available.
-  fetch('schedule.html?record=' + Date.now(), { cache: 'no-store' })
-    .then(r => r.ok ? r.text() : Promise.reject())
-    .then(html => {
-      const matches = [...html.matchAll(/["']([WL])\s+\d+\s*[–-]\s*\d+["']/g)];
-      if (!matches.length) return;
-      targetWins = matches.filter(m => m[1] === 'W').length;
-      targetLosses = matches.filter(m => m[1] === 'L').length;
-      if (started) {
-        winsEl.textContent = String(targetWins);
-        lossesEl.textContent = String(targetLosses);
-      }
-    })
-    .catch(() => {});
-
-  // Primary trigger: animate as soon as the number enters the viewport.
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      if (entries.some(entry => entry.isIntersecting)) {
-        startTally();
-        observer.disconnect();
-      }
-    }, { threshold: 0.2 });
-    observer.observe(record);
-  } else {
-    const check = () => {
-      const r = record.getBoundingClientRect();
-      if (r.top < window.innerHeight && r.bottom > 0) {
-        startTally();
-        window.removeEventListener('scroll', check);
-      }
-    };
-    window.addEventListener('scroll', check, { passive: true });
-    check();
-  }
-})();
-</script>
 
 <section id="schedule" data-screen-label="Photo band" style="position:relative;background:var(--ink);overflow:hidden">
   <div style="position:relative;height:clamp(340px,42vw,520px)">
@@ -628,6 +554,108 @@
 </div>
 
 </x-dc>
+
+<script>
+(function () {
+  function initAllTimeTally() {
+    const record = document.getElementById('all-time-record');
+    const winsEl = document.getElementById('all-time-wins');
+    const lossesEl = document.getElementById('all-time-losses');
+
+    // support.js renders the <x-dc> content asynchronously on the live site.
+    // If it is not ready yet, try again shortly.
+    if (!record || !winsEl || !lossesEl) {
+      setTimeout(initAllTimeTally, 100);
+      return;
+    }
+
+    if (record.dataset.tallyReady === '1') return;
+    record.dataset.tallyReady = '1';
+
+    let targetWins = Number(winsEl.textContent) || 52;
+    let targetLosses = Number(lossesEl.textContent) || 5;
+    let started = false;
+
+    function countTo(el, target, duration) {
+      const startTime = performance.now();
+
+      function frame(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = String(Math.round(target * eased));
+
+        if (progress < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          el.textContent = String(target);
+        }
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    function startTally() {
+      if (started) return;
+      started = true;
+
+      winsEl.textContent = '0';
+      lossesEl.textContent = '0';
+
+      countTo(winsEl, targetWins, 1250);
+      countTo(lossesEl, targetLosses, 1250);
+    }
+
+    // Pull the record from the live schedule page.
+    fetch('./schedule.html?record=' + Date.now(), { cache: 'no-store' })
+      .then(function (response) {
+        if (!response.ok) throw new Error('Could not load schedule');
+        return response.text();
+      })
+      .then(function (html) {
+        const matches = Array.from(
+          html.matchAll(/["']([WL])\s+\d+\s*[–-]\s*\d+["']/g)
+        );
+
+        if (matches.length) {
+          targetWins = matches.filter(function (m) { return m[1] === 'W'; }).length;
+          targetLosses = matches.filter(function (m) { return m[1] === 'L'; }).length;
+
+          // Keep the correct static fallback until the animation begins.
+          if (!started) {
+            winsEl.textContent = String(targetWins);
+            lossesEl.textContent = String(targetLosses);
+          }
+        }
+      })
+      .catch(function () {
+        // Keep the hard-coded 52–5 fallback if schedule.html cannot be fetched.
+      });
+
+    // Start only when the all-time record actually scrolls into view.
+    function checkVisibility() {
+      const rect = record.getBoundingClientRect();
+      const visible = rect.top < window.innerHeight * 0.88 && rect.bottom > 0;
+
+      if (visible) {
+        startTally();
+        window.removeEventListener('scroll', checkVisibility);
+        window.removeEventListener('resize', checkVisibility);
+      }
+    }
+
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    window.addEventListener('resize', checkVisibility);
+    checkVisibility();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllTimeTally);
+  } else {
+    initAllTimeTally();
+  }
+})();
+</script>
+
 
 
 
