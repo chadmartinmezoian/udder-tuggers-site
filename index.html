@@ -362,7 +362,7 @@
     </div>
 
     <div style="margin:64px auto 0;text-align:center">
-      <div class="all-time-record" style="font-family:var(--font-heading);font-weight:900;font-size:clamp(58px,7vw,96px);line-height:.9;letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap"><span id="all-time-record"><span id="all-time-wins">0</span>–<span id="all-time-losses">0</span></span> <span style="color:var(--pink-deep)">All-Time</span></div>
+      <div class="all-time-record" style="font-family:var(--font-heading);font-weight:900;font-size:clamp(58px,7vw,96px);line-height:.9;letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap"><span id="all-time-record"><span id="all-time-wins">52</span>–<span id="all-time-losses">5</span></span> <span style="color:var(--pink-deep)">All-Time</span></div>
       <p style="margin:22px auto 0;max-width:820px;text-align:center;font-family:var(--font-heading);font-weight:900;font-size:clamp(22px,2.4vw,32px);line-height:1.18;letter-spacing:-.02em;text-wrap:balance">
         Founded in 2024 and all we've done is win.<br><span style="color:var(--pink-deep)">We would like to apologize to nobody.</span>
       </p>
@@ -557,86 +557,85 @@
 
 
 <script>
-  // Keep the homepage all-time record synced with completed games on schedule.html,
-  // then count up to the live totals when the record scrolls into view.
+  // Sync the all-time record with schedule.html and animate it when the story section enters view.
   (() => {
     const winsEl = document.getElementById('all-time-wins');
     const lossesEl = document.getElementById('all-time-losses');
-    const recordEl = document.getElementById('all-time-record');
+    const storyEl = document.getElementById('story');
 
-    if (!winsEl || !lossesEl || !recordEl) return;
+    if (!winsEl || !lossesEl) return;
 
     let targetWins = 52;
     let targetLosses = 5;
-    let hasAnimated = false;
-    let isReady = false;
+    let ready = false;
+    let animated = false;
 
-    const animateNumber = (el, target, duration = 1100) => {
-      const start = performance.now();
+    function animateNumber(el, target, duration) {
+      const startTime = performance.now();
 
-      const tick = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
+      function frame(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.round(target * eased);
+        if (progress < 1) requestAnimationFrame(frame);
+      }
 
-        if (progress < 1) requestAnimationFrame(tick);
-      };
+      requestAnimationFrame(frame);
+    }
 
-      requestAnimationFrame(tick);
-    };
-
-    const runAnimation = () => {
-      if (hasAnimated || !isReady) return;
-      hasAnimated = true;
+    function playTally() {
+      if (!ready || animated) return;
+      animated = true;
 
       winsEl.textContent = '0';
       lossesEl.textContent = '0';
 
       animateNumber(winsEl, targetWins, 1150);
       animateNumber(lossesEl, targetLosses, 1150);
-    };
+    }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          runAnimation();
-          if (hasAnimated) observer.disconnect();
-        }
-      });
-    }, { threshold: 0.55 });
+    function storyIsVisible() {
+      const target = storyEl || winsEl;
+      const rect = target.getBoundingClientRect();
+      return rect.top < window.innerHeight * 0.78 && rect.bottom > 0;
+    }
 
-    observer.observe(recordEl);
+    function maybePlay() {
+      if (storyIsVisible()) playTally();
+    }
 
-    fetch('schedule.html', { cache: 'no-store' })
+    // Use a simple scroll check so this works even if IntersectionObserver
+    // is unavailable or behaves differently in the hosting environment.
+    window.addEventListener('scroll', maybePlay, { passive: true });
+    window.addEventListener('resize', maybePlay);
+
+    fetch('./schedule.html?v=' + Date.now(), { cache: 'no-store' })
       .then(response => {
         if (!response.ok) throw new Error('Could not load schedule');
         return response.text();
       })
       .then(html => {
-        const results = [...html.matchAll(/"([WL])\s+\d+[–-]\d+"/g)];
+        // Count every game result stored in the schedule data arrays.
+        const results = html.match(/["']([WL])\s+\d+\s*[–-]\s*\d+["']/g) || [];
 
         if (results.length) {
-          targetWins = 0;
-          targetLosses = 0;
-
-          results.forEach(match => {
-            if (match[1] === 'W') targetWins += 1;
-            if (match[1] === 'L') targetLosses += 1;
-          });
+          targetWins = results.filter(result => /["']W\s+/.test(result)).length;
+          targetLosses = results.filter(result => /["']L\s+/.test(result)).length;
         }
 
-        isReady = true;
+        // Show the correct total immediately as a fallback.
+        winsEl.textContent = String(targetWins);
+        lossesEl.textContent = String(targetLosses);
 
-        const rect = recordEl.getBoundingClientRect();
-        const visible = rect.top < window.innerHeight && rect.bottom > 0;
-        if (visible) runAnimation();
+        ready = true;
+        maybePlay();
       })
       .catch(() => {
-        isReady = true;
-
-        const rect = recordEl.getBoundingClientRect();
-        const visible = rect.top < window.innerHeight && rect.bottom > 0;
-        if (visible) runAnimation();
+        // If schedule.html cannot be fetched, keep the known fallback record.
+        winsEl.textContent = String(targetWins);
+        lossesEl.textContent = String(targetLosses);
+        ready = true;
+        maybePlay();
       });
   })();
 </script>
