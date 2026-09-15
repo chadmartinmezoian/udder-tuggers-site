@@ -248,14 +248,6 @@
       </sc-for>
     </div>
 
-    <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
-      <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:200;background:rgba(14,14,16,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;cursor:pointer">
-        <div class="tug-modal" style="position:relative;max-width:1100px;width:100%;cursor:default">
-          <img src="assets/tuggie-niko-ruiz.png" alt="Niko Ruiz — The Blind Justice Award" style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.5)">
-          <div onClick="{{ close }}" role="button" tabindex="0" style="position:absolute;top:-52px;right:0;display:flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72);cursor:pointer" style-hover="color:var(--pink)">Close &times;</div>
-        </div>
-      </div>
-    </sc-if>
   </div>
 </section>
 
@@ -307,6 +299,15 @@
     </div>
   </div>
 </footer>
+
+    <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:200;background:rgba(14,14,16,.82);display:flex;align-items:center;justify-content:center;padding:24px;cursor:pointer">
+        <div class="tug-modal" style="position:relative;max-width:1100px;width:100%;cursor:default">
+          <img src="assets/tuggie-niko-ruiz.png" alt="Niko Ruiz — The Blind Justice Award" style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.5)">
+          <div onClick="{{ close }}" role="button" tabindex="0" style="position:absolute;top:-52px;right:0;display:flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72);cursor:pointer" style-hover="color:var(--pink)">Close &times;</div>
+        </div>
+      </div>
+    </sc-if>
 
 </div>
 
