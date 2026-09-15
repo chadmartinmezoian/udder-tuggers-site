@@ -71,26 +71,8 @@
     .up-block{align-items:center!important}
   }
   @media (max-width:640px){
-    .game-row{
-      grid-template-columns:46px minmax(0,1fr) auto!important;
-      grid-row-gap:0!important;
-      column-gap:10px!important;
-      padding:12px 14px!important;
-      min-height:64px;
-      text-align:left!important;
-      justify-items:stretch!important;
-    }
-    .game-row > div:first-child{align-items:flex-start!important;text-align:left!important}
-    .game-row > div:nth-child(2){min-width:0;text-align:left!important}
-    .game-opponent{font-size:15px!important;line-height:1.15!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .game-venue{display:none!important}
-    .game-res{
-      grid-column:3!important;
-      justify-self:end!important;
-      align-self:center!important;
-      font-size:12.5px!important;
-      padding:7px 11px!important;
-    }
+    .game-row{grid-template-columns:52px 1fr!important;grid-row-gap:10px!important;padding:16px 18px!important}
+    .game-res{grid-column:2!important;justify-self:start!important}
   }
 
   @keyframes utSplashOut{0%,55%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
@@ -115,48 +97,21 @@
   @media (max-width:700px){
     .ut-drop-btn{font-size:11px;letter-spacing:.1em}
   }
-  /* Mobile hamburger navigation */
-  .mobile-nav-details{display:none;margin-left:auto;position:relative}
-  .mobile-nav-details summary{list-style:none;width:46px;height:46px;border:1.5px solid rgba(255,255,255,.38);border-radius:12px;background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;position:relative}
-  .mobile-nav-details summary::-webkit-details-marker{display:none}
-  .mobile-nav-details summary span{display:block;width:21px;height:2px;background:#fff;border-radius:2px;transition:transform .2s ease,opacity .2s ease;position:absolute}
-  .mobile-nav-details summary span:nth-child(1){transform:translateY(-7px)}
-  .mobile-nav-details summary span:nth-child(3){transform:translateY(7px)}
-  .mobile-nav-details[open] summary span:nth-child(1){transform:rotate(45deg)}
-  .mobile-nav-details[open] summary span:nth-child(2){opacity:0}
-  .mobile-nav-details[open] summary span:nth-child(3){transform:rotate(-45deg)}
-  .mobile-nav-panel{position:absolute;top:calc(100% + 12px);right:0;width:min(320px,calc(100vw - 32px));background:var(--white);border-radius:18px;box-shadow:0 16px 40px rgba(14,14,16,.22);overflow:hidden;z-index:100}
-  .mobile-nav-inner{padding:10px 18px 18px}
-  .mobile-nav-link,.mobile-team-label{display:flex!important;align-items:center;min-height:48px;padding:0 12px;border-bottom:1px solid rgba(14,14,16,.08);font-size:13px!important;font-weight:800!important;letter-spacing:.14em!important;text-transform:uppercase;color:var(--ink)!important}
-  .mobile-team-label{color:var(--pink-deep)!important;border-bottom:0;min-height:40px;padding-top:8px}
-  .mobile-team-sub{margin:0 0 6px 12px;padding-left:14px;border-left:2px solid var(--pink-soft)}
-  .mobile-team-sub .mobile-nav-link{min-height:43px;font-size:12px!important}
-  .mobile-sponsor{margin-top:12px;justify-content:center!important;border:0!important;border-radius:999px;background:var(--pink-deep);color:#fff!important}
-  @media (max-width:700px){
-    .nav-links{display:none!important}
-    .mobile-nav-details{display:block}
-    .nav-row{overflow:visible!important}
-    .nav-row{padding:12px 18px!important;gap:12px!important}
-    .nav-row > a:first-child img{height:48px!important}
-    .nav-row > a:first-child > span > span:first-child{font-size:17px!important}
-    .nav-links{display:none!important}
-  }
 
-  .season-block{margin-top:48px}
-  .season-summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 26px;background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;cursor:pointer;list-style:none;box-shadow:0 2px 10px rgba(14,14,16,.04)}
-  .season-summary::-webkit-details-marker{display:none}
-  .season-summary-left{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
-  .season-summary h2{font-size:clamp(26px,3vw,40px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
-  .season-summary-meta{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
-  .season-chevron{font-size:26px;font-weight:900;color:var(--pink-deep);transition:transform .2s ease}
-  details[open] > .season-summary .season-chevron{transform:rotate(90deg)}
-  .season-content{padding-top:6px}
-  @media (max-width:640px){
-    .season-summary{padding:18px 20px}
-    .season-summary-left{justify-content:center!important;width:100%}
-    .season-chevron{position:absolute;right:20px}
+  .ut-menu-cb{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+  .ut-burger{display:none;margin-left:auto;flex:0 0 auto;cursor:pointer;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+  .ut-burger span{display:block;width:22px;height:2.5px;border-radius:2px;background:#fff;transition:transform .2s ease,opacity .2s ease}
+  .ut-menu-cb:checked ~ .ut-burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .ut-menu-cb:checked ~ .ut-burger span:nth-child(2){opacity:0}
+  .ut-menu-cb:checked ~ .ut-burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  @media (max-width:860px){
+    .ut-burger{display:flex}
+    .nav-links{position:absolute!important;top:100%;left:0;right:0;width:auto!important;margin:0!important;display:none!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;overflow:visible!important;background:var(--pink-deep);padding:8px 20px 20px;box-shadow:0 18px 40px rgba(14,14,16,.28)}
+    .ut-menu-cb:checked ~ .nav-links{display:flex!important}
+    .nav-links a{padding:14px 2px!important;font-size:13px!important;letter-spacing:.16em!important;border-bottom:1px solid rgba(255,255,255,.18)!important;text-align:left!important}
+    .nav-links a:last-child{border-bottom:0!important;margin-top:14px;text-align:center!important}
+    .nav-cta{align-self:stretch;padding:15px 20px!important;font-size:12px!important}
   }
-
 </style>
 </helmet>
 
@@ -173,6 +128,8 @@
         <span style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:4px" class="nav-brand-sub">Topsham, Maine</span>
       </span>
     </a>
+    <input type="checkbox" id="ut-menu" class="ut-menu-cb" aria-hidden="true">
+    <label for="ut-menu" class="ut-burger" aria-label="Menu"><span></span><span></span><span></span></label>
     <nav class="nav-links" style="margin-left:auto;display:flex;align-items:center;gap:30px">
       <a href="index.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
       <a href="about.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
@@ -191,24 +148,6 @@
       <a href="clubhouse.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Clubhouse</a>
       <a href="sponsors.html" style="font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-deep);background:#fff;padding:11px 20px;border-radius:999px" class="nav-cta" style-hover="background:var(--ink);color:#fff">Sponsor Us</a>
     </nav>
-    <details class="mobile-nav-details">
-      <summary aria-label="Open navigation"><span></span><span></span><span></span></summary>
-      <nav class="mobile-nav-panel" aria-label="Mobile navigation">
-    <div class="mobile-nav-inner">
-      <a class="mobile-nav-link" href="index.html">Home</a>
-      <a class="mobile-nav-link" href="about.html">About</a>
-      <a class="mobile-nav-link" href="schedule.html">Schedule</a>
-      <div class="mobile-team-label">Team</div>
-      <div class="mobile-team-sub">
-        <a class="mobile-nav-link" href="roster.html">Roster</a>
-        <a class="mobile-nav-link" href="stats.html">Stats</a>
-        <a class="mobile-nav-link" href="awards.html">Awards</a>
-      </div>
-      <a class="mobile-nav-link" href="clubhouse.html">Clubhouse</a>
-      <a class="mobile-nav-link mobile-sponsor" href="sponsors.html">Sponsor Us</a>
-    </div>
-      </nav>
-    </details>
   </div>
 </header>
 
@@ -227,7 +166,7 @@
     </svg>
   </div>
   <div class="sec sec-y" style="position:relative;max-width:1240px;margin:0 auto;padding:80px 32px 68px">
-    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:26px;width:100%">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px">
       <span style="display:block;width:36px;height:2px;background:var(--pink-deep)"></span>
       <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">2026 Season</span>
     </div>
@@ -257,111 +196,31 @@
 
 <section data-screen-label="Results" class="sec sec-y" style="background:var(--paper);padding:80px 32px 104px">
   <div style="max-width:1240px;margin:0 auto">
+    <h2 style="font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.02em;text-transform:uppercase">2026 Results</h2>
 
-    <details open>
-      <summary class="season-summary">
-        <div class="season-summary-left">
-          <h2>2026 Results</h2>
-          <span class="season-summary-meta">18–2</span>
+    <sc-for list="{{ months }}" as="m" hint-placeholder-count="4">
+      <div style="margin-top:48px">
+        <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
+          <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
+          <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
         </div>
-        <span class="season-chevron">›</span>
-      </summary>
-      <div class="season-content">
-        <sc-for list="{{ months2026 }}" as="m" hint-placeholder-count="4">
-          <div style="margin-top:48px">
-            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
-              <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
-              <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
+        <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
+          <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
+            <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
+              <div style="display:flex;flex-direction:column;line-height:1">
+                <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
+                <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
+              </div>
+              <div>
+                <span style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
+                <span style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
+              </div>
+              <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
             </div>
-            <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
-              <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
-                <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
-                  <div style="display:flex;flex-direction:column;line-height:1">
-                    <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
-                    <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
-                  </div>
-                  <div>
-                    <span class="game-opponent" style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
-                    <span class="game-venue" style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
-                  </div>
-                  <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-        </sc-for>
-      </div>
-    </details>
-
-    <details class="season-block">
-      <summary class="season-summary">
-        <div class="season-summary-left">
-          <h2>2025 Results</h2>
-          <span class="season-summary-meta">17–1</span>
+          </sc-for>
         </div>
-        <span class="season-chevron">›</span>
-      </summary>
-      <div class="season-content">
-        <sc-for list="{{ months2025 }}" as="m" hint-placeholder-count="4">
-          <div style="margin-top:48px">
-            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
-              <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
-              <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
-            </div>
-            <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
-              <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
-                <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
-                  <div style="display:flex;flex-direction:column;line-height:1">
-                    <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
-                    <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
-                  </div>
-                  <div>
-                    <span class="game-opponent" style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
-                    <span class="game-venue" style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
-                  </div>
-                  <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-        </sc-for>
       </div>
-    </details>
-
-    <details class="season-block">
-      <summary class="season-summary">
-        <div class="season-summary-left">
-          <h2>2024 Results</h2>
-          <span class="season-summary-meta">17–2</span>
-        </div>
-        <span class="season-chevron">›</span>
-      </summary>
-      <div class="season-content">
-        <sc-for list="{{ months2024 }}" as="m" hint-placeholder-count="4">
-          <div style="margin-top:48px">
-            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:16px">
-              <h3 style="font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)">{{ m.label }}</h3>
-              <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)">{{ m.record }}</span>
-            </div>
-            <div style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.04)">
-              <sc-for list="{{ m.games }}" as="g" hint-placeholder-count="5">
-                <div class="game-row" style="display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:20px;padding:20px 26px;border-top:1px solid rgba(14,14,16,.08)">
-                  <div style="display:flex;flex-direction:column;line-height:1">
-                    <span style="font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">{{ g.dow }}</span>
-                    <span style="margin-top:6px;font-family:var(--font-heading);font-weight:900;font-size:28px;letter-spacing:-.02em">{{ g.day }}</span>
-                  </div>
-                  <div>
-                    <span class="game-opponent" style="display:block;font-size:18px;font-weight:800;letter-spacing:-.01em">{{ g.opponent }}</span>
-                    <span class="game-venue" style="display:block;margin-top:5px;font-size:13.5px;color:var(--ink-3)">{{ g.venue }}</span>
-                  </div>
-                  <span class="game-res" style="{{ g.resultStyle }}">{{ g.result }}</span>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-        </sc-for>
-      </div>
-    </details>
+    </sc-for>
 
     <p style="margin-top:36px;font-size:12.5px;letter-spacing:.04em;color:rgba(14,14,16,.45)">Doubleheaders are listed as two games. Home games are marked "vs." and away games "@".</p>
   </div>
@@ -415,7 +274,7 @@ class Component extends DCLogic {
     const win = "display:inline-flex;align-items:center;font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.04em;color:#ffffff;background:var(--ink);padding:9px 16px;border-radius:999px;white-space:nowrap";
     const loss = "display:inline-flex;align-items:center;font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.04em;color:var(--pink-deep);background:var(--pink-soft);border:1px solid rgba(201,67,107,.3);padding:8px 15px;border-radius:999px;white-space:nowrap";
 
-    const data2026 = [
+    const data = [
       ["May 2026", "3–1", [
         ["Sun", "3", "@ Red Sox", "Kents Hill School", "W 4–2", 1],
         ["", "", "vs. Red Sox", "Kents Hill School", "W 7–6", 1],
@@ -446,83 +305,18 @@ class Component extends DCLogic {
       ]]
     ];
 
-    const data2025 = [
-      ["May 2025", "2–0", [
-        ["Sun", "18", "@ Lincoln County Cardinals", "", "W 2–0", 1],
-        ["", "", "vs. Lincoln County Cardinals", "", "W 8–1", 1]
-      ]],
-      ["June 2025", "7–1", [
-        ["Sun", "1", "@ Kennebec Sturgeons", "", "W 13–0", 1],
-        ["", "", "vs. Kennebec Sturgeons", "", "W 4–3", 1],
-        ["Sun", "8", "vs. Mid-Maine River Pigs", "", "W 8–3", 1],
-        ["", "", "@ Mid-Maine River Pigs", "", "W 18–2", 1],
-        ["Sun", "15", "@ Brunswick Yard Goats", "", "W 17–1", 1],
-        ["Sun", "22", "@ Bethel Braves", "", "L 1–7", 0],
-        ["Sun", "29", "vs. Bangor Mets", "", "W 8–7", 1],
-        ["", "", "@ Bangor Mets", "", "W 10–3", 1]
-      ]],
-      ["July 2025", "4–0", [
-        ["Sun", "6", "vs. Lincoln County Cardinals", "", "W 8–3", 1],
-        ["Sun", "13", "vs. Kennebec Sturgeons", "", "W 27–0", 1],
-        ["Sun", "27", "vs. Brunswick Yard Goats", "", "W 14–6", 1],
-        ["", "", "@ Brunswick Yard Goats", "", "W 14–0", 1]
-      ]],
-      ["August 2025", "4–0", [
-        ["Sun", "3", "@ Mid-Maine River Pigs", "", "W 6–1", 1],
-        ["Sun", "10", "vs. Turner Marlins", "", "W 16–4", 1],
-        ["Sun", "17", "vs. Green Wave", "", "W 14–10", 1],
-        ["Sun", "24", "vs. Bethel Braves", "", "W 4–3", 1]
-      ]]
-    ];
-
-    const data2024 = [
-      ["May 2024", "3–0", [
-        ["Sun", "5", "vs. Kennebec Sturgeons", "at 71 Dragon Drive", "W 12–0", 1],
-        ["Sun", "19", "vs. Mid-Maine River Pigs", "at 71 Dragon Drive", "W 14–4", 1],
-        ["", "", "@ Mid-Maine River Pigs", "at 71 Dragon Drive", "W 5–4", 1]
-      ]],
-      ["June 2024", "5–1", [
-        ["Sun", "2", "@ Panthers", "at 103 Alpine St", "W 10–4", 1],
-        ["Sun", "9", "@ Bangor Mets", "at Lancey Street", "W 15–0", 1],
-        ["", "", "vs. Bangor Mets", "at Lancey Street", "W 8–0", 1],
-        ["Sun", "16", "@ Braves", "at 284 Walkers Mills Rd", "W 5–3", 1],
-        ["Sun", "23", "vs. Turner Marlins", "at 71 Dragon Drive", "W 9–0", 1],
-        ["Sun", "30", "vs. Rumford Expos", "at 71 Dragon Drive", "L 2–3", 0]
-      ]],
-      ["July 2024", "6–0", [
-        ["Sun", "7", "@ Hippach Hounds", "at 300 Main St", "W 10–0", 1],
-        ["Sun", "14", "@ Winthrop Red Sox", "at 211 Rambler Rd", "W 6–3", 1],
-        ["", "", "vs. Winthrop Red Sox", "at 211 Rambler Rd", "W 3–0", 1],
-        ["Sun", "21", "vs. Central Maine Green Wave", "at 66 Republic Ave", "W 9–0", 1],
-        ["", "", "@ Central Maine Green Wave", "at 66 Republic Ave", "W 9–0", 1],
-        ["Sun", "28", "vs. Brunswick Yard Goats", "at 66 Republic Ave", "W 24–2", 1]
-      ]],
-      ["August 2024", "3–1", [
-        ["Sun", "4", "@ Turner Marlins", "at 66 Republic Ave", "W 9–0", 1],
-        ["Sun", "11", "vs. Kennebec Sturgeons", "at 66 Republic Ave", "W 14–1", 1],
-        ["Sun", "18", "vs. Winthrop Red Sox", "at 66 Republic Ave", "W 9–6", 1],
-        ["Sun", "25", "vs. Braves", "at 7 Ballpark Way", "L 2–8", 0]
-      ]]
-    ];
-
-    const mapMonths = (data) => data.map(([label, record, games]) => ({
-      label, record,
-      games: games.map(([dow, day, opponent, venue, result, won]) => ({
-        dow, day, opponent, venue, result,
-        resultStyle: won ? win : loss
-      }))
-    }));
-
     return {
-      months2026: mapMonths(data2026),
-      months2025: mapMonths(data2025),
-      months2024: mapMonths(data2024)
+      months: data.map(([label, record, games]) => ({
+        label, record,
+        games: games.map(([dow, day, opponent, venue, result, won]) => ({
+          dow, day, opponent, venue, result,
+          resultStyle: won ? win : loss
+        }))
+      }))
     };
   }
 }
 
 </script>
-
-
 </body>
 </html>
