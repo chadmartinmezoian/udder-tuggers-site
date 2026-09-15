@@ -34,29 +34,8 @@
   .u-nav a:hover{color:#fff}
   .u-dark a{color:var(--white)}
   .u-dark a:hover{color:var(--pink)}
-  .u-lift{transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s ease}
-  .u-lift:hover{transform:translateY(-4px)}
-  .brk{display:none}
-  @media (max-width:1000px){
-    .brk{display:inline}
-    .yr-title{margin-top:22px!important}
-    .hero-art{display:none!important}
-    .hero-copy{text-align:center}
-    .hero-copy > div{justify-content:center}
-    .hero-copy p{margin-left:auto!important;margin-right:auto!important}
-    .ctr-m{text-align:center}
-    .ctr-m p{margin-left:auto!important;margin-right:auto!important}
-    .ctr-m > div{margin-left:auto;margin-right:auto}
-    .cta-ctr{justify-content:center!important;text-align:center}
-    .cta-ctr > div{width:100%;justify-content:center}
-    .grid-3{grid-template-columns:1fr!important}
-    .champ-card{transform:none!important}
-    .hero-grid{grid-template-columns:1fr!important;gap:24px!important;padding-top:56px!important;padding-bottom:56px!important}
-    .hero-art{min-height:0!important}
-    .hero-art img{width:70%!important;max-width:380px!important}
-    .two-col{grid-template-columns:1fr!important;gap:28px!important}
-    .cta-grid{grid-template-columns:1fr!important;padding:40px 28px!important}
-  }
+  .award-row{transition:background .18s ease}
+  .award-row:hover{background:var(--paper)}
   @media (max-width:1060px){
     .nav-row{flex-wrap:nowrap!important;gap:14px!important}
     .nav-links{margin-left:auto!important;min-width:0;flex:1 1 auto;justify-content:flex-end;gap:14px!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
@@ -80,6 +59,13 @@
     section li{text-align:left}
     .u-lift{align-items:center}
     .game-row,.award-row{text-align:center;justify-items:center}
+    .award-row{text-align:left!important;justify-items:stretch!important}
+    section:has(.award-row){text-align:left}
+    section:has(.award-row) h1,section:has(.award-row) h2,section:has(.award-row) h3{text-align:left}
+    section:not(:has(.award-row)) h1{text-align:center}
+    .eyebrow{justify-content:center!important}
+    section:not(:has(.award-row)) div[style*="display:flex"]{justify-content:center!important}
+    section[data-screen-label="Awards CTA"] > div{flex-direction:column;text-align:center;gap:24px!important}
     .foot-row{flex-direction:column;align-items:center!important;text-align:center;gap:28px!important}
     .foot-row nav{justify-content:center}
     .foot-social{justify-content:center;text-align:center}
@@ -87,8 +73,11 @@
     .nav-row{padding-left:16px!important;padding-right:16px!important}
     .nav-links a{white-space:nowrap}
     .sec{padding-left:20px!important;padding-right:20px!important}
-    .sec-y{padding-top:64px!important;padding-bottom:64px!important}
-    .photo-ov{background:linear-gradient(180deg, rgba(14,14,16,.35) 0%, rgba(14,14,16,.85) 70%)!important}
+    .sec-y{padding-top:56px!important;padding-bottom:56px!important}
+    .year-grid{grid-template-columns:1fr!important;gap:16px!important}
+  }
+  @media (max-width:600px){
+    .award-row{grid-template-columns:1fr!important;gap:6px!important}
   }
 
   @keyframes utSplashOut{0%,55%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
@@ -97,6 +86,11 @@
   .ut-splash img{width:min(38vw,240px);animation:utMarkIn 1.5s cubic-bezier(.2,.7,.3,1) forwards}
   @media (prefers-reduced-motion:reduce){.ut-splash{display:none}}
 
+  .stat-row:hover{background:var(--pink-soft)}
+  .stat-row:hover td[style*="position:sticky"]{background:var(--pink-soft)!important}
+  @media (max-width:860px){
+    .stat-head{flex-direction:column;align-items:center!important;text-align:center;gap:14px!important}
+  }
   .ut-flat{display:none}
   .ut-drop{position:relative;display:flex;align-items:center}
   .ut-drop-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap}
@@ -128,12 +122,24 @@
     .nav-links a:last-child{border-bottom:0!important;margin-top:14px;text-align:center!important}
     .nav-cta{align-self:stretch;padding:15px 20px!important;font-size:12px!important}
   }
+  .art-grid{}
+  @media (max-width:980px){
+    .art-grid{grid-template-columns:1fr!important;gap:32px!important}
+  }
+  @media (max-width:860px){
+    .art-hero{text-align:left!important;padding-bottom:36px!important}
+    .art-hero h1,.art-hero span{text-align:left!important}
+    .art-body{text-align:left!important}
+    .art-body p{text-align:left!important;margin-left:0!important;margin-right:0!important}
+    .art-body div[style*="display:flex"]{justify-content:flex-start!important}
+    .art-side{text-align:left!important}
+  }
 </style>
 </helmet>
 
 <div style="min-height:100vh;background:var(--paper);overflow-x:clip">
-<div class="ut-splash" aria-hidden="true"><img src="assets/mascot.png" alt=""></div>
 
+<div class="ut-splash" aria-hidden="true"><img src="assets/mascot.png" alt=""></div>
 
 <header class="u-nav" style="position:sticky;top:0;z-index:40;background:rgba(201,67,107,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,16,.12)">
   <div class="nav-row" style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px">
@@ -148,10 +154,10 @@
     <label for="ut-menu" class="ut-burger" aria-label="Menu"><span></span><span></span><span></span></label>
     <nav class="nav-links" style="margin-left:auto;display:flex;align-items:center;gap:30px">
       <a href="index.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
-      <a href="about.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:2px solid #fff;padding-bottom:3px">About</a>
+      <a href="about.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
       <a href="schedule.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
       <span class="ut-drop">
-        <button type="button" class="ut-drop-btn" aria-haspopup="true">Team <span style="font-size:9px;line-height:1">▾</span></button>
+        <button type="button" class="ut-drop-btn is-active" aria-haspopup="true">Team <span style="font-size:9px;line-height:1">▾</span></button>
         <span class="ut-drop-menu">
           <a href="roster.html">Roster</a>
           <a href="stats.html">Stats</a>
@@ -167,96 +173,90 @@
   </div>
 </header>
 
-<section data-screen-label="About header" style="position:relative;background:var(--white);overflow:hidden">
-  <div style="position:absolute;inset:0;opacity:0.16;pointer-events:none">
-    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
-      <g fill="#8d9096">
-        <path d="M120 90c60-40 150-30 190 20s10 120-40 150-140 40-190-10-20-120 40-160z"></path>
-        <path d="M520 40c80-20 160 30 150 100s-90 90-160 70-100-80-70-130 40-30 80-40z"></path>
-        <path d="M900 140c70-50 200-10 210 70s-80 140-170 130-150-70-130-140 50-40 90-60z"></path>
-        <path d="M80 460c90-60 180 10 190 90s-70 150-160 140-140-80-120-160 40-50 90-70z"></path>
-        <path d="M480 420c110-40 210 40 190 130s-120 130-210 100-110-110-70-170 50-50 90-60z"></path>
-        <path d="M860 520c80-30 190 30 190 110s-100 120-180 110-130-70-120-140 40-60 110-80z"></path>
-        <path d="M300 700c70-30 150 20 150 80s-70 100-140 90-110-60-90-110 40-50 80-60z"></path>
-      </g>
-    </svg>
-  </div>
-  <div class="sec sec-y hero-grid" style="position:relative;max-width:1240px;margin:0 auto;padding:84px 32px 76px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center">
-    <div class="hero-copy">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px">
-        <span style="display:block;width:36px;height:2px;background:var(--pink-deep)"></span>
-        <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">About the Club</span>
-      </div>
-      <h1 style="font-size:clamp(48px,6.2vw,84px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase">Founded<br>in 2024</h1>
-      <p style="margin-top:26px;max-width:560px;font-size:18px;line-height:1.62;color:var(--ink-3)">
-        The Topsham Udder Tuggers play in the Pine Tree Men's Baseball League.
-      </p>
-    </div>
-    <div class="hero-art" style="position:relative;display:flex;justify-content:center;align-items:center;min-height:220px">
-      <img src="assets/mascot.png" alt="Udder Tuggers cow mascot" style="width:100%;max-width:460px;transform:rotate(-4deg);filter:drop-shadow(0 26px 40px rgba(14,14,16,.20))">
+<section data-screen-label="Article header" style="position:relative;background:var(--ink);overflow:hidden">
+  <div style="position:relative;height:clamp(300px,36vw,460px)">
+    <img src="assets/aj-derby.png" alt="AJ Arroyo at Leahey Field" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:saturate(.9) contrast(1.02) brightness(.88)">
+    <div class="photo-ov" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,16,.28) 0%,rgba(14,14,16,.72) 58%,rgba(14,14,16,.96) 100%)"></div>
+    <div class="art-hero" style="position:absolute;left:0;right:0;bottom:0;max-width:1240px;margin:0 auto;padding:0 32px 48px">
+      <span style="font-size:11.5px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)">All-Star Sunday &nbsp;/&nbsp; Sept 15, 2026</span>
+      <h1 style="margin-top:16px;max-width:900px;font-size:clamp(32px,4.6vw,62px);line-height:1;letter-spacing:-.025em;text-transform:uppercase;color:var(--white);text-wrap:pretty">Arroyo Wins the First Annual Pine Tree League Home Run Derby</h1>
     </div>
   </div>
 </section>
 
-<section data-screen-label="Our Story" class="sec sec-y" style="background:var(--paper);padding:104px 32px">
-  <div class="two-col ctr-m" style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start">
-    <div>
-      <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">Our Story</span>
-      <h2 style="margin-top:16px;font-size:clamp(34px,3.8vw,52px);line-height:.98;letter-spacing:-.02em;text-transform:uppercase">A Serious<br>Baseball Club<br>With an Udderly<br>Perfect Name</h2>
-      <p style="margin-top:22px;font-family:var(--font-heading);font-weight:900;font-style:italic;font-size:clamp(18px,2.2vw,30px);line-height:1.2;letter-spacing:.01em;text-transform:uppercase;color:var(--pink-deep)">Built to win. <span class="brk"><br></span>Born to tug.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:22px;max-width:620px">
-      <p style="font-size:16.5px;line-height:1.7;color:var(--ink-3)">
-        The Udder Tuggers were founded in 2024 by a group of players already competing in the Pine Tree Men's Baseball League who were hellbent on building a new powerhouse. The idea was simple: bring together some of the best baseball talent from the Portland and Topsham area and see what we could build.
-      </p>
-      <p style="font-size:16.5px;line-height:1.7;color:var(--ink-3)">
-        Many of the guys had played with or against each other in other leagues, and little by little, the pieces started coming together. The result was a team built to compete from day one.
-      </p>
-      <p style="font-size:16.5px;line-height:1.7;color:var(--ink-3)">
-        The Tuggers reached the league championship in their inaugural season, returned in 2025 and captured the club's first title, then made the finals again in 2026. With each season, the roster has gotten stronger, the expectations higher, and the haters louder. Win or lose, the goal stays the same: keep getting better and keep chasing championships.
-      </p>
-    </div>
-  </div>
-</section>
+<section data-screen-label="Article" class="sec sec-y" style="background:var(--paper);padding:72px 32px 96px">
+  <div class="art-grid" style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:start">
 
-<section data-screen-label="Championship History" class="sec sec-y" style="position:relative;background:var(--paper-2);padding:104px 32px;overflow:hidden">
-  <div class="ctr-m" style="position:relative;max-width:1240px;margin:0 auto">
-    <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">Championship History</span>
-    <h2 style="margin-top:16px;font-size:clamp(34px,3.8vw,52px);line-height:.98;letter-spacing:-.02em;text-transform:uppercase">Every Season, the Final</h2>
-    <div class="grid-3" style="margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-      <div class="u-lift" style="position:relative;background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:28px;padding:38px 32px 32px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.05)">
-        <div style="position:absolute;top:0;left:0;right:0;height:5px;background:var(--ink-3)"></div>
-        <span style="font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.2em;color:var(--ink-3)">2024</span>
-        <h3 class="yr-title" style="margin-top:60px;font-size:34px;letter-spacing:-.01em;text-transform:uppercase;line-height:1">Finalists</h3>
-        <p style="margin-top:14px;font-size:15px;line-height:1.6;color:var(--ink-3)">Inaugural season. The Udder Tuggers stormed into the Pine Tree Men's Baseball League and cemented themselves as a powerhouse.</p>
-      </div>
-      <div class="u-lift champ-card" style="position:relative;background:var(--ink);color:var(--white);border-radius:28px;padding:38px 32px 32px;overflow:hidden;box-shadow:0 18px 44px rgba(14,14,16,.28);transform:translateY(-18px)">
-        <div style="position:absolute;top:0;left:0;right:0;height:5px;background:var(--pink)"></div>
-        <div style="position:absolute;top:-70px;right:-70px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle at 40% 45%, rgba(247,168,190,.26), rgba(247,168,190,0) 70%)"></div>
-        <span style="position:relative;font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.2em;color:var(--pink)">2025</span>
-        <h3 class="yr-title" style="position:relative;margin-top:60px;font-size:38px;letter-spacing:-.015em;text-transform:uppercase;line-height:1;color:var(--pink)">Champions</h3>
-        <p style="position:relative;margin-top:14px;font-size:15px;line-height:1.6;color:rgba(255,255,255,.78)">Back in the final, and this time we finished it. The first championship in club history.</p>
-      </div>
-      <div class="u-lift" style="position:relative;background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:28px;padding:38px 32px 32px;overflow:hidden;box-shadow:0 2px 10px rgba(14,14,16,.05)">
-        <div style="position:absolute;top:0;left:0;right:0;height:5px;background:var(--pink)"></div>
-        <span style="font-family:var(--font-heading);font-weight:900;font-size:15px;letter-spacing:.2em;color:var(--ink-3)">2026</span>
-        <h3 class="yr-title" style="margin-top:60px;font-size:34px;letter-spacing:-.01em;text-transform:uppercase;line-height:1">Finalists</h3>
-        <p style="margin-top:14px;font-size:15px;line-height:1.6;color:var(--ink-3)">A third straight trip to the championship game. Another nail-biter with the Bethel Braves.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="art-body">
+      <p style="font-size:clamp(19px,2vw,23px);line-height:1.5;font-weight:600;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty">
+        Five Udder Tuggers made the trek to Bates College in Lewiston on Sunday, September 13 for the Pine Tree Men&rsquo;s Baseball League All-Star Game and the first annual home run derby. Four of them swung in the derby. Only Tuggers left the yard.
+      </p>
 
-<section data-screen-label="About CTA" class="sec sec-y" style="background:var(--paper-2);padding:88px 32px">
-  <div class="cta-ctr" style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap">
-    <div>
-      <span style="font-size:11.5px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--pink-deep)">Support the Team</span>
-      <h2 style="margin-top:14px;font-size:clamp(30px,3.2vw,42px);line-height:1;letter-spacing:-.02em;text-transform:uppercase">Want to Join the Herd?</h2>
+      <p style="margin-top:26px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        It was a rainy Sunday morning, the baseballs were waterlogged, and getting one out of the ballpark was going to take a herculean effort. Twenty swings each, and most of the field never found one.
+      </p>
+
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        Chad Mezoian got the Tuggers on the board first, wrapping one off the left field foul pole &mdash; a feat some say is worth three home runs. AJ Arroyo followed with an impressive blast to left center, then saved the best for last &mdash; a title-securing shot down the left field line on his twentieth and final swing. Mezoian, playing the outfield and every bit the gentleman, had a chance to rob it and let it go. He knew what the title meant to AJ.
+      </p>
+
+      <figure style="margin:34px 0 0;display:grid;gap:12px">
+        <div style="border-radius:22px;overflow:hidden;background:var(--ink)">
+          <img src="assets/aj-derby.png" alt="AJ Arroyo holding his bat at Leahey Field, Bates College" style="width:100%;height:auto;display:block">
+        </div>
+        <figcaption style="font-size:12.5px;line-height:1.5;color:rgba(14,14,16,.5)">AJ Arroyo, No. 92, at Leahey Field before the derby.</figcaption>
+      </figure>
+
+      <div style="margin:34px 0;padding:28px 32px;background:var(--pink-soft);border-radius:22px">
+        <p style="font-family:var(--font-heading);font-weight:900;font-size:clamp(20px,2.2vw,27px);line-height:1.25;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty">
+          &ldquo;Chad had a chance to rob it. He knew how much the title meant to AJ.&rdquo;
+        </p>
+      </div>
+
+      <p style="font-size:17px;line-height:1.72;color:var(--ink-3)">
+        Eric Cavers was the last Tugger to go and wasted no time, belting one within his first five swings. He came close more than once the rest of the round but never matched Arroyo&rsquo;s total. Stephen Carter also represented the club in the derby.
+      </p>
+
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        No other participant in the field hit a single home run &mdash; a fair testament to where the power in this league lives. Arroyo will look to defend the title next September, and the rest of the herd will be right on his heels.
+      </p>
+
+      <div style="margin-top:38px;padding-top:26px;border-top:1px solid rgba(14,14,16,.12);display:flex;gap:14px;flex-wrap:wrap">
+        <a href="awards.html" style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--white);background:var(--ink);padding:14px 26px;border-radius:999px" style-hover="background:var(--pink-deep)">All Team Awards &rarr;</a>
+        <a href="roster.html" style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:transparent;border:1.5px solid rgba(14,14,16,.2);padding:13px 26px;border-radius:999px" style-hover="border-color:var(--pink-deep);color:var(--pink-deep)">Meet the Roster &rarr;</a>
+      </div>
     </div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <a href="roster.html" style="display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(14,14,16,.22);color:var(--ink);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="border-color:var(--ink);background:var(--white)">Meet the Roster</a>
-      <a href="sponsors.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--white);font-weight:800;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;padding:16px 30px;border-radius:999px" style-hover="background:var(--pink-deep)">Become a Sponsor</a>
-    </div>
+
+    <aside class="art-side" style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;padding:28px;box-shadow:0 3px 16px rgba(14,14,16,.06)">
+      <span style="font-size:10.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--pink-deep)">Derby Results</span>
+      <div style="margin-top:20px;display:flex;flex-direction:column;gap:2px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid rgba(14,14,16,.1)">
+          <div>
+            <span style="display:block;font-size:15px;font-weight:800;letter-spacing:-.01em">AJ Arroyo</span>
+            <span style="display:block;margin-top:3px;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)">Champion</span>
+          </div>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:30px;line-height:1;color:var(--ink)">2</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:15px;font-weight:800;letter-spacing:-.01em">Chad Mezoian</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:rgba(14,14,16,.5)">1</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:15px;font-weight:800;letter-spacing:-.01em">Eric Cavers</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:rgba(14,14,16,.5)">1</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:15px;font-weight:800;letter-spacing:-.01em">Stephen Carter</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:rgba(14,14,16,.5)">0</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0">
+          <span style="font-size:14px;font-weight:700;letter-spacing:-.01em;color:var(--ink-4)">Rest of the league</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:rgba(14,14,16,.32)">0</span>
+        </div>
+      </div>
+      <p style="margin-top:18px;font-size:12px;line-height:1.55;color:rgba(14,14,16,.45)">Bates College, Lewiston &middot; 20 swings per hitter</p>
+    </aside>
+
   </div>
 </section>
 
@@ -300,6 +300,37 @@
 </footer>
 
 </div>
+
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    // num, name, GP, PA, AB, H, 2B, 3B, HR, RBI, R, BB, SO, SB, AVG, OBP, SLG, OPS
+    const raw = [
+      ["26", "Josh Massey", 10, 32, 23, 13, 0, 0, 0, 13, 11, 8, 3, 0, ".565", ".656", ".565", "1.221"],
+      ["27", "Chad Mezoian", 16, 53, 44, 22, 9, 0, 1, 15, 17, 4, 1, 1, ".500", ".509", ".773", "1.282"],
+      ["92", "AJ Arroyo", 20, 71, 60, 28, 4, 0, 2, 22, 20, 8, 3, 8, ".467", ".535", ".633", "1.169"],
+      ["5", "Cam Delisle", 16, 48, 33, 15, 4, 1, 0, 11, 12, 10, 3, 5, ".455", ".583", ".636", "1.220"],
+      ["13", "Josh Mackey", 20, 69, 55, 25, 4, 0, 0, 18, 26, 8, 4, 4, ".455", ".536", ".527", "1.064"],
+      ["94", "Eric Cavers", 16, 52, 46, 20, 9, 0, 1, 18, 20, 4, 5, 5, ".435", ".481", ".696", "1.176"],
+      ["4", "Alberto Peña Rojas", 16, 51, 42, 18, 5, 1, 3, 15, 20, 7, 10, 8, ".429", ".529", ".810", "1.339"],
+      ["19", "Nate Duncklee", 7, 20, 14, 6, 3, 0, 0, 3, 5, 4, 2, 0, ".429", ".550", ".643", "1.193"],
+      ["10", "Peter Richard", 18, 56, 47, 20, 2, 0, 0, 10, 18, 8, 7, 12, ".426", ".500", ".468", ".968"],
+      ["99", "Sosa Telemaco", 16, 40, 29, 11, 0, 0, 0, 5, 10, 7, 5, 0, ".379", ".500", ".379", ".879"],
+      ["93", "Jerod Verrill", 16, 50, 47, 17, 2, 0, 2, 12, 11, 2, 3, 1, ".362", ".380", ".532", ".912"],
+      ["11", "Brady Larson", 15, 48, 42, 13, 2, 0, 0, 7, 7, 4, 10, 3, ".310", ".362", ".357", ".719"],
+      ["47", "John Parker", 12, 32, 25, 7, 2, 0, 0, 6, 6, 5, 3, 0, ".280", ".406", ".360", ".766"],
+      ["9", "Niko Ruiz", 9, 28, 22, 6, 2, 0, 0, 2, 7, 4, 4, 1, ".273", ".429", ".364", ".792"],
+      ["44", "Stephen Carter", 17, 51, 44, 12, 3, 0, 2, 13, 10, 6, 6, 3, ".273", ".353", ".477", ".830"],
+      ["23", "Drew Kempf", 16, 43, 37, 10, 0, 0, 0, 7, 11, 5, 6, 0, ".270", ".372", ".270", ".642"],
+      ["28", "Steven Albert", 10, 23, 19, 2, 0, 0, 0, 1, 4, 3, 8, 0, ".105", ".261", ".105", ".366"]
+    ];
+    return {
+      rows: raw.map((r) => ({ num: r[0], name: r[1], vals: r.slice(2) })),
+      totals: [20, 767, 629, 245, 51, 2, 11, 178, 215, 97, 83, 51, ".390", ".474", ".529", "1.003"]
+    };
+  }
+}
+</script>
 </body>
 </html>
