@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-cf2b694e-ed69-4293-b3ae-791489e89272/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0e10; --ink-2:#1b1b1e; --ink-3:#3c3c40;
+    --paper:#f7f4ef; --paper-2:#efeae1; --white:#ffffff;
+    --pink:#f7a8be; --pink-deep:#c9436b; --pink-soft:#fde7ee;
+    --gold:#f0c33c; --gold-deep:#a97f12;
+    --font-heading:"Figtree", system-ui, sans-serif;
+    --font-body:"Figtree", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body)}
+  h1,h2,h3,h4{font-family:var(--font-heading);font-weight:900;margin:0}
+  p{margin:0}
+  a{color:var(--pink-deep);text-decoration:none}
+  a:hover{color:var(--ink)}
+  ::selection{background:var(--pink);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--pink-deep);outline-offset:3px}
+  .u-nav a{color:rgba(255,255,255,.82)}
+  .u-nav a:hover{color:#fff}
+  .u-dark a{color:var(--white)}
+  .u-dark a:hover{color:var(--pink)}
+  .award-row{transition:background .18s ease}
+  .award-row:hover{background:var(--paper)}
+  @media (max-width:1060px){
+    .nav-row{flex-wrap:nowrap!important;gap:14px!important}
+    .nav-links{margin-left:auto!important;min-width:0;flex:1 1 auto;justify-content:flex-end;gap:14px!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .nav-links::-webkit-scrollbar{display:none}
+    .nav-links a{white-space:nowrap;flex:0 0 auto}
+  }
+  @media (max-width:700px){
+    .nav-brand-sub{display:none!important}
+    .nav-links{gap:12px!important}
+    .nav-links a{font-size:11px!important;letter-spacing:.1em!important}
+    .nav-cta{padding:9px 14px!important;font-size:10.5px!important}
+  }
+  @media (max-width:860px){
+
+    section{text-align:center}
+    section p{margin-left:auto!important;margin-right:auto!important}
+    section h1,section h2,section h3{text-align:center}
+    section div[style*="display:flex"]{justify-content:center!important}
+    section div[style*="align-items:flex-end"]{align-items:center!important}
+    section ul{align-items:center}
+    section li{text-align:left}
+    .u-lift{align-items:center}
+    .game-row,.award-row{text-align:center;justify-items:center}
+    .award-row{text-align:left!important;justify-items:stretch!important}
+    section:has(.award-row){text-align:left}
+    section:has(.award-row) h1,section:has(.award-row) h2,section:has(.award-row) h3{text-align:left}
+    section:not(:has(.award-row)) h1{text-align:center}
+    .eyebrow{justify-content:center!important}
+    section:not(:has(.award-row)) div[style*="display:flex"]{justify-content:center!important}
+    section[data-screen-label="Awards CTA"] > div{flex-direction:column;text-align:center;gap:24px!important}
+    .foot-row{flex-direction:column;align-items:center!important;text-align:center;gap:28px!important}
+    .foot-row nav{justify-content:center}
+    .foot-social{justify-content:center;text-align:center}
+    .foot-legal{justify-content:center!important;text-align:center}
+    .nav-row{padding-left:16px!important;padding-right:16px!important}
+    .nav-links a{white-space:nowrap}
+    .sec{padding-left:20px!important;padding-right:20px!important}
+    .sec-y{padding-top:56px!important;padding-bottom:56px!important}
+    .year-grid{grid-template-columns:1fr!important;gap:16px!important}
+  }
+  @media (max-width:600px){
+    .award-row{grid-template-columns:1fr!important;gap:6px!important}
+  }
+
+  @keyframes utSplashOut{0%,55%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+  @keyframes utMarkIn{0%{opacity:0;transform:scale(.88)}45%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1.03)}}
+  .ut-splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--ink);animation:utSplashOut 1.5s cubic-bezier(.4,0,.2,1) forwards;pointer-events:none}
+  .ut-splash img{width:min(38vw,240px);animation:utMarkIn 1.5s cubic-bezier(.2,.7,.3,1) forwards}
+  @media (prefers-reduced-motion:reduce){.ut-splash{display:none}}
+
+  .stat-row:hover{background:var(--pink-soft)}
+  .stat-row:hover td[style*="position:sticky"]{background:var(--pink-soft)!important}
+  @media (max-width:860px){
+    .stat-head{flex-direction:column;align-items:center!important;text-align:center;gap:14px!important}
+  }
+  .ut-flat{display:none}
+  .ut-drop{position:relative;display:flex;align-items:center}
+  .ut-drop-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap}
+  .ut-drop:hover .ut-drop-btn,.ut-drop:focus-within .ut-drop-btn{color:#fff}
+  .ut-drop-btn.is-active{color:#fff;border-bottom:2px solid #fff;padding-bottom:3px}
+  .ut-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);min-width:168px;background:var(--white);border-radius:16px;box-shadow:0 16px 40px rgba(14,14,16,.22);padding:8px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .16s ease,transform .16s ease;z-index:60}
+  .ut-drop:hover .ut-drop-menu,.ut-drop:focus-within .ut-drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(10px)}
+  .u-nav .ut-drop-menu a{display:block;padding:11px 14px;border-radius:10px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .u-nav .ut-drop-menu a:hover{background:var(--pink-soft);color:var(--pink-deep)}
+  @media (max-width:1060px){
+    .ut-drop{display:none!important}
+    .ut-flat{display:inline!important;flex:0 0 auto}
+  }
+  @media (max-width:700px){
+    .ut-drop-btn{font-size:11px;letter-spacing:.1em}
+  }
+
+  .ut-menu-cb{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+  .ut-burger{display:none;margin-left:auto;flex:0 0 auto;cursor:pointer;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+  .ut-burger span{display:block;width:22px;height:2.5px;border-radius:2px;background:#fff;transition:transform .2s ease,opacity .2s ease}
+  .ut-menu-cb:checked ~ .ut-burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .ut-menu-cb:checked ~ .ut-burger span:nth-child(2){opacity:0}
+  .ut-menu-cb:checked ~ .ut-burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  @media (max-width:860px){
+    .ut-burger{display:flex}
+    .nav-links{position:absolute!important;top:100%;left:0;right:0;width:auto!important;margin:0!important;display:none!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;overflow:visible!important;background:var(--pink-deep);padding:8px 20px 20px;box-shadow:0 18px 40px rgba(14,14,16,.28)}
+    .ut-menu-cb:checked ~ .nav-links{display:flex!important}
+    .nav-links a{padding:14px 2px!important;font-size:13px!important;letter-spacing:.16em!important;border-bottom:1px solid rgba(255,255,255,.18)!important;text-align:left!important}
+    .nav-links a:last-child{border-bottom:0!important;margin-top:14px;text-align:center!important}
+    .nav-cta{align-self:stretch;padding:15px 20px!important;font-size:12px!important}
+  }
+  .art-grid{}
+  @media (max-width:980px){
+    .art-grid{grid-template-columns:1fr!important;gap:32px!important}
+  }
+  @media (max-width:860px){
+    .art-hero{text-align:left!important;padding-bottom:36px!important}
+    .art-hero h1,.art-hero span{text-align:left!important}
+    .art-body{text-align:left!important}
+    .art-body p{text-align:left!important;margin-left:0!important;margin-right:0!important}
+    .art-body div[style*="display:flex"]{justify-content:flex-start!important}
+    .art-side{text-align:left!important}
+  }
+  @media (max-width:860px){
+    .pr-hero{grid-template-columns:1fr!important;gap:28px!important;padding:32px 20px 40px!important}
+    .pr-photo{order:-1;max-width:260px!important;margin:0 auto}
+  }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--paper);overflow-x:clip">
+
+<div class="ut-splash" aria-hidden="true"><img src="assets/mascot.png" alt=""></div>
+
+<header class="u-nav" style="position:sticky;top:0;z-index:40;background:rgba(201,67,107,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,16,.12)">
+  <div class="nav-row" style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto">
+      <img src="assets/mascot.png" alt="Udder Tuggers mascot" style="height:46px;width:auto;display:block">
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:var(--font-heading);font-weight:900;font-size:17px;letter-spacing:.02em;text-transform:uppercase;color:#fff">Udder Tuggers</span>
+        <span style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:4px" class="nav-brand-sub">Topsham, Maine</span>
+      </span>
+    </a>
+    <input type="checkbox" id="ut-menu" class="ut-menu-cb" aria-hidden="true">
+    <label for="ut-menu" class="ut-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+    <nav class="nav-links" style="margin-left:auto;display:flex;align-items:center;gap:30px">
+      <a href="index.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
+      <a href="about.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
+      <a href="schedule.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
+      <span class="ut-drop">
+        <button type="button" class="ut-drop-btn is-active" aria-haspopup="true">Team <span style="font-size:9px;line-height:1">▾</span></button>
+        <span class="ut-drop-menu">
+          <a href="roster.html">Roster</a>
+          <a href="stats.html">Stats</a>
+          <a href="awards.html">Awards</a>
+        </span>
+      </span>
+      <a class="ut-flat" href="roster.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+      <a class="ut-flat" href="stats.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Stats</a>
+      <a class="ut-flat" href="awards.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
+      <a href="clubhouse.html" style="font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Clubhouse</a>
+      <a href="sponsors.html" style="font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-deep);background:#fff;padding:11px 20px;border-radius:999px" class="nav-cta" style-hover="background:var(--ink);color:#fff">Sponsor Us</a>
+    </nav>
+  </div>
+</header>
+
+<section data-screen-label="Article header" style="position:relative;background:var(--ink);overflow:hidden">
+  <div style="position:absolute;top:-140px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle at 40% 45%, rgba(247,168,190,.16), rgba(247,168,190,0) 70%);pointer-events:none"></div>
+  <div class="pr-hero" style="position:relative;max-width:1240px;margin:0 auto;padding:56px 32px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;align-items:center">
+    <div class="art-hero">
+      <span style="font-size:11.5px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)">League Honors &nbsp;/&nbsp; Oct 2, 2026</span>
+      <h1 style="margin-top:16px;max-width:760px;font-size:clamp(32px,4.4vw,58px);line-height:1;letter-spacing:-.025em;text-transform:uppercase;color:var(--white);text-wrap:pretty">Joshua Massey Named River Division Comeback Player of the Year</h1>
+    </div>
+    <div class="pr-photo" style="position:relative;width:100%;max-width:320px;aspect-ratio:4/5;border-radius:26px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12)">
+      <img src="assets/josh-massey.png" alt="Joshua Massey in an Udder Tuggers jersey" style="width:100%;height:100%;object-fit:cover;object-position:50% 24%;display:block">
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Article" class="sec sec-y" style="background:var(--paper);padding:72px 32px 96px">
+  <div class="art-grid" style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:start">
+
+    <div class="art-body">
+      <p style="font-size:clamp(19px,2vw,23px);line-height:1.5;font-weight:600;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty">
+        Topsham Udder Tuggers&rsquo; #26 Joshua Massey has been named the 2026 Pine Tree League River Division Comeback Player of the Year.
+      </p>
+
+      <p style="margin-top:26px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        In January, baseball wasn&rsquo;t on Massey&rsquo;s mind at all. A serious GI illness put him in the hospital for 22 days, and the goals got very simple: get out of bed, eat solid food, walk, and get home to his wife and kids. For a while, it wasn&rsquo;t clear any of that was a given.
+      </p>
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        Recovery didn&rsquo;t follow a straight line. It was two steps forward, one step back, with the constant worry of a setback in the background. Multiple doctors told him baseball needed to be off the table for at least a year. For the first time in 17 years, Massey missed Opening Day.
+      </p>
+
+      <div style="margin:34px 0;padding:28px 32px;background:var(--pink-soft);border-radius:22px">
+        <p style="font-family:var(--font-heading);font-weight:900;font-size:clamp(20px,2.2vw,27px);line-height:1.25;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty">
+          &ldquo;Anyone who knows me knows I don&rsquo;t handle being told what I can&rsquo;t do particularly well.&rdquo;
+        </p>
+        <span style="display:block;margin-top:16px;font-size:11.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--pink-deep)">Joshua Massey</span>
+      </div>
+
+      <p style="font-size:17px;line-height:1.72;color:var(--ink-3)">
+        He couldn&rsquo;t control how fast his body healed, but he could do the work. He listened to his body, got stronger, and kept going. When he was finally cleared to play, which took some convincing, he got back on the field as fast as he could.
+      </p>
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        Even then, it wasn&rsquo;t a clean return. Swinging a bat after months away isn&rsquo;t like riding a bike, and there were days his body made him back off and remember what he&rsquo;d just been through. He took those days as they came, rested when he had to, and showed up again the next time. That patience, from a guy who freely admits he doesn&rsquo;t love being out of control, may have been the hardest part of the whole comeback.
+      </p>
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        He never stopped showing up for the team, either. Before he was back to full strength, Massey was in the dugout coaching, and in September he helped coach the Pine Tree League All-Star Game at Bates College.
+      </p>
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        Limited to six regular-season games, Massey went on a tear. He hit .692 with a .765 on-base percentage, collecting nine hits, scoring eight runs, driving in six and drawing four walks in just 17 plate appearances. Counting the playoffs, he finished the year hitting .565 with a .656 on-base percentage and 13 RBI across 10 games.
+      </p>
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        And in typical Massey fashion, he came up big when it mattered most, delivering a big hit in a big spot in the championship game against Bethel.
+      </p>
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        He also caught again. Across 10.2 innings behind the plate he allowed no passed balls and threw out 20% of would-be base stealers.
+      </p>
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;color:var(--ink-3)">
+        Massey has said that playing again was enough to make the season meaningful, award or not. In a year when so much was out of his control, baseball gave him routine, something to look forward to, and a piece of himself back. He credits the doctor who gave him a chance, and his wife, family and friends who went through it all with him.
+      </p>
+
+      <p style="margin-top:22px;font-size:17px;line-height:1.72;font-weight:700;color:var(--ink)">
+        Congratulations to #26 Joshua Massey, the 2026 River Division Comeback Player of the Year. In a season full of big hits, his return was the biggest one.
+      </p>
+
+      <div style="margin-top:38px;padding-top:26px;border-top:1px solid rgba(14,14,16,.12);display:flex;gap:14px;flex-wrap:wrap">
+        <a href="awards.html" style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--white);background:var(--ink);padding:14px 26px;border-radius:999px" style-hover="background:var(--pink-deep)">All Team Awards &rarr;</a>
+        <a href="roster.html" style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:transparent;border:1.5px solid rgba(14,14,16,.2);padding:13px 26px;border-radius:999px" style-hover="border-color:var(--pink-deep);color:var(--pink-deep)">Meet the Roster &rarr;</a>
+      </div>
+    </div>
+
+    <aside class="art-side" style="background:var(--white);border:1px solid rgba(14,14,16,.1);border-radius:24px;padding:28px;box-shadow:0 3px 16px rgba(14,14,16,.06)">
+      <span style="font-size:10.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--pink-deep)">2026 Season, Incl. Playoffs</span>
+      <div style="margin-top:12px;display:flex;align-items:baseline;gap:12px">
+        <span style="font-family:var(--font-heading);font-weight:900;font-size:44px;line-height:1;letter-spacing:-.03em;color:rgba(14,14,16,.12)">26</span>
+        <div>
+          <span style="display:block;font-size:17px;font-weight:800;letter-spacing:-.01em;text-transform:uppercase">Joshua Massey</span>
+          <span style="display:block;margin-top:3px;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)">C &middot; Comeback Player</span>
+        </div>
+      </div>
+      <div style="margin-top:18px;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">Games</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">10</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">AVG</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">.565</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">OBP</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">.656</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">OPS</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">1.221</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">H / R / RBI</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">13 / 11 / 13</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">Walks</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">8</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">Plate appearances</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">32</span>
+        </div>
+      </div>
+      <span style="display:block;margin-top:22px;font-size:10.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--pink-deep)">Behind the Plate</span>
+      <div style="margin-top:6px;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">Innings caught</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">10.2</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">Passed balls</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">0</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid rgba(14,14,16,.1)">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-3)">Caught stealing</span>
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:24px;line-height:1;color:var(--ink)">20%</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<footer class="u-dark sec" style="background:var(--ink);color:rgba(255,255,255,.6);padding:64px 32px 40px">
+  <div style="max-width:1240px;margin:0 auto">
+    <div class="foot-row" style="display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:16px">
+        <img src="assets/mascot.png" alt="" style="height:64px;width:auto">
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:var(--font-heading);font-weight:900;font-size:20px;letter-spacing:.02em;text-transform:uppercase;color:var(--white)">Topsham Udder Tuggers</span>
+          <span style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;margin-top:8px">Est. 2024 &nbsp;•&nbsp; Topsham, Maine</span>
+        </span>
+      </div>
+      <nav style="display:flex;gap:26px;flex-wrap:wrap">
+        <a href="index.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Home</a>
+        <a href="about.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">About</a>
+        <a href="schedule.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Schedule</a>
+        <a href="roster.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Roster</a>
+        <a href="stats.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Stats</a>
+        <a href="awards.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Awards</a>
+        <a href="clubhouse.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Clubhouse</a>
+        <a href="sponsors.html" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Sponsors</a>
+      </nav>
+    </div>
+    <div id="follow" class="foot-social" style="margin-top:40px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--pink)">Follow the Herd</span>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.instagram.com/topshamuddertuggers/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1.5px solid rgba(255,255,255,.24);padding:10px 18px;border-radius:999px" style-hover="border-color:var(--pink);color:var(--pink)">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61557686881524" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1.5px solid rgba(255,255,255,.24);padding:10px 18px;border-radius:999px" style-hover="border-color:var(--pink);color:var(--pink)">Facebook</a>
+      </div>
+      <span style="font-size:12px;color:rgba(255,255,255,.45)">@topshamuddertuggers</span>
+    </div>
+    <div class="foot-legal" style="margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <span style="font-size:12px">© 2026 Topsham Udder Tuggers Baseball Club</span>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/ptbl.png" alt="Pine Tree Men's Baseball League" style="height:44px;width:44px;object-fit:contain;background:var(--white);border-radius:50%;padding:2px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">Member Club · Pine Tree Men's Baseball League</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    // num, name, GP, PA, AB, H, 2B, 3B, HR, RBI, R, BB, SO, SB, AVG, OBP, SLG, OPS
+    const raw = [
+      ["26", "Josh Massey", 10, 32, 23, 13, 0, 0, 0, 13, 11, 8, 3, 0, ".565", ".656", ".565", "1.221"],
+      ["27", "Chad Mezoian", 16, 53, 44, 22, 9, 0, 1, 15, 17, 4, 1, 1, ".500", ".509", ".773", "1.282"],
+      ["92", "AJ Arroyo", 20, 71, 60, 28, 4, 0, 2, 22, 20, 8, 3, 8, ".467", ".535", ".633", "1.169"],
+      ["5", "Cam Delisle", 16, 48, 33, 15, 4, 1, 0, 11, 12, 10, 3, 5, ".455", ".583", ".636", "1.220"],
+      ["13", "Josh Mackey", 20, 69, 55, 25, 4, 0, 0, 18, 26, 8, 4, 4, ".455", ".536", ".527", "1.064"],
+      ["94", "Eric Cavers", 16, 52, 46, 20, 9, 0, 1, 18, 20, 4, 5, 5, ".435", ".481", ".696", "1.176"],
+      ["4", "Alberto Peña Rojas", 16, 51, 42, 18, 5, 1, 3, 15, 20, 7, 10, 8, ".429", ".529", ".810", "1.339"],
+      ["19", "Nate Duncklee", 7, 20, 14, 6, 3, 0, 0, 3, 5, 4, 2, 0, ".429", ".550", ".643", "1.193"],
+      ["10", "Peter Richard", 18, 56, 47, 20, 2, 0, 0, 10, 18, 8, 7, 12, ".426", ".500", ".468", ".968"],
+      ["99", "Sosa Telemaco", 16, 40, 29, 11, 0, 0, 0, 5, 10, 7, 5, 0, ".379", ".500", ".379", ".879"],
+      ["93", "Jerod Verrill", 16, 50, 47, 17, 2, 0, 2, 12, 11, 2, 3, 1, ".362", ".380", ".532", ".912"],
+      ["11", "Brady Larson", 15, 48, 42, 13, 2, 0, 0, 7, 7, 4, 10, 3, ".310", ".362", ".357", ".719"],
+      ["47", "John Parker", 12, 32, 25, 7, 2, 0, 0, 6, 6, 5, 3, 0, ".280", ".406", ".360", ".766"],
+      ["9", "Niko Ruiz", 9, 28, 22, 6, 2, 0, 0, 2, 7, 4, 4, 1, ".273", ".429", ".364", ".792"],
+      ["44", "Stephen Carter", 17, 51, 44, 12, 3, 0, 2, 13, 10, 6, 6, 3, ".273", ".353", ".477", ".830"],
+      ["23", "Drew Kempf", 16, 43, 37, 10, 0, 0, 0, 7, 11, 5, 6, 0, ".270", ".372", ".270", ".642"],
+      ["28", "Steven Albert", 10, 23, 19, 2, 0, 0, 0, 1, 4, 3, 8, 0, ".105", ".261", ".105", ".366"]
+    ];
+    return {
+      rows: raw.map((r) => ({ num: r[0], name: r[1], vals: r.slice(2) })),
+      totals: [20, 767, 629, 245, 51, 2, 11, 178, 215, 97, 83, 51, ".390", ".474", ".529", "1.003"]
+    };
+  }
+}
+</script>
+</body>
+</html>
