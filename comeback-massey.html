@@ -350,35 +350,61 @@
   </div>
 </footer>
 
+<div class="ut-audio" style="position:fixed;right:20px;bottom:20px;z-index:150;display:flex;align-items:center;gap:6px;background:var(--ink);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px;box-shadow:0 10px 30px rgba(14,14,16,.3)">
+  <button onClick="{{ toggleAudio }}" aria-label="{{ audioLabel }}" style="display:flex;align-items:center;gap:10px;background:transparent;color:var(--white);border:0;border-radius:999px;padding:4px 14px 4px 6px;font-family:var(--font-heading);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;cursor:pointer" style-hover="background:rgba(255,255,255,.08)">
+    <span style="width:28px;height:28px;border-radius:50%;background:var(--pink);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:10px">{{ audioIcon }}</span>
+    <span>{{ audioText }}</span>
+  </button>
+  <button onClick="{{ toggleRepeat }}" aria-label="Repeat" aria-pressed="{{ repeatPressed }}" title="Repeat" style="{{ repeatStyle }}">&#x21BB;</button>
+</div>
+
+
 </div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
+  state = { playing: false, repeat: false };
+  componentDidMount() {
+    const a = new Audio('assets/candles-burning.mp3');
+    a.loop = false; a.volume = 0.5; a.preload = 'auto';
+    this.audio = a; this.userPaused = false;
+    a.addEventListener('play', () => this.setState({ playing: true }));
+    a.addEventListener('pause', () => this.setState({ playing: false }));
+    a.addEventListener('ended', () => this.setState({ playing: false }));
+    const evs = ['pointerup', 'click', 'keydown', 'touchend'];
+    const cleanup = () => evs.forEach((e) => window.removeEventListener(e, start, true));
+    const start = (e) => {
+      if (this.userPaused || !a.paused) return cleanup();
+      if (e && e.target && e.target.closest && e.target.closest('.ut-audio')) return;
+      a.play().then(cleanup).catch(() => {});
+    };
+    this.cleanupStart = cleanup;
+    a.play().catch(() => evs.forEach((e) => window.addEventListener(e, start, { capture: true, passive: true })));
+  }
+  componentWillUnmount() {
+    if (this.audio) this.audio.pause();
+    if (this.cleanupStart) this.cleanupStart();
+  }
   renderVals() {
-    // num, name, GP, PA, AB, H, 2B, 3B, HR, RBI, R, BB, SO, SB, AVG, OBP, SLG, OPS
-    const raw = [
-      ["26", "Josh Massey", 10, 32, 23, 13, 0, 0, 0, 13, 11, 8, 3, 0, ".565", ".656", ".565", "1.221"],
-      ["27", "Chad Mezoian", 16, 53, 44, 22, 9, 0, 1, 15, 17, 4, 1, 1, ".500", ".509", ".773", "1.282"],
-      ["92", "AJ Arroyo", 20, 71, 60, 28, 4, 0, 2, 22, 20, 8, 3, 8, ".467", ".535", ".633", "1.169"],
-      ["5", "Cam Delisle", 16, 48, 33, 15, 4, 1, 0, 11, 12, 10, 3, 5, ".455", ".583", ".636", "1.220"],
-      ["13", "Josh Mackey", 20, 69, 55, 25, 4, 0, 0, 18, 26, 8, 4, 4, ".455", ".536", ".527", "1.064"],
-      ["94", "Eric Cavers", 16, 52, 46, 20, 9, 0, 1, 18, 20, 4, 5, 5, ".435", ".481", ".696", "1.176"],
-      ["4", "Alberto Peña Rojas", 16, 51, 42, 18, 5, 1, 3, 15, 20, 7, 10, 8, ".429", ".529", ".810", "1.339"],
-      ["19", "Nate Duncklee", 7, 20, 14, 6, 3, 0, 0, 3, 5, 4, 2, 0, ".429", ".550", ".643", "1.193"],
-      ["10", "Peter Richard", 18, 56, 47, 20, 2, 0, 0, 10, 18, 8, 7, 12, ".426", ".500", ".468", ".968"],
-      ["99", "Sosa Telemaco", 16, 40, 29, 11, 0, 0, 0, 5, 10, 7, 5, 0, ".379", ".500", ".379", ".879"],
-      ["93", "Jerod Verrill", 16, 50, 47, 17, 2, 0, 2, 12, 11, 2, 3, 1, ".362", ".380", ".532", ".912"],
-      ["11", "Brady Larson", 15, 48, 42, 13, 2, 0, 0, 7, 7, 4, 10, 3, ".310", ".362", ".357", ".719"],
-      ["47", "John Parker", 12, 32, 25, 7, 2, 0, 0, 6, 6, 5, 3, 0, ".280", ".406", ".360", ".766"],
-      ["9", "Niko Ruiz", 9, 28, 22, 6, 2, 0, 0, 2, 7, 4, 4, 1, ".273", ".429", ".364", ".792"],
-      ["44", "Stephen Carter", 17, 51, 44, 12, 3, 0, 2, 13, 10, 6, 6, 3, ".273", ".353", ".477", ".830"],
-      ["23", "Drew Kempf", 16, 43, 37, 10, 0, 0, 0, 7, 11, 5, 6, 0, ".270", ".372", ".270", ".642"],
-      ["28", "Steven Albert", 10, 23, 19, 2, 0, 0, 0, 1, 4, 3, 8, 0, ".105", ".261", ".105", ".366"]
-    ];
+    const playing = this.state.playing;
     return {
-      rows: raw.map((r) => ({ num: r[0], name: r[1], vals: r.slice(2) })),
-      totals: [20, 767, 629, 245, 51, 2, 11, 178, 215, 97, 83, 51, ".390", ".474", ".529", "1.003"]
+      audioIcon: playing ? '\u275A\u275A' : '\u25B6',
+      audioText: playing ? 'Candles Burning' : 'Play Music',
+      audioLabel: playing ? 'Pause music' : 'Play music',
+      repeatPressed: this.state.repeat ? 'true' : 'false',
+      repeatStyle: 'width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;font-size:16px;font-weight:900;line-height:1;display:flex;align-items:center;justify-content:center;' +
+        (this.state.repeat ? 'background:var(--pink);color:var(--ink)' : 'background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)'),
+      toggleRepeat: () => {
+        const r = !this.state.repeat;
+        if (this.audio) this.audio.loop = r;
+        this.setState({ repeat: r });
+      },
+      toggleAudio: () => {
+        const a = this.audio; if (!a) return;
+        if (a.paused) { this.userPaused = false; a.play().catch(() => {}); }
+        else { this.userPaused = true; a.pause(); }
+      }
     };
   }
 }
